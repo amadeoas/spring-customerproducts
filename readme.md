@@ -1,6 +1,6 @@
 # Spring Customer Products Application
 
-By Amadeo Asco on April 2016.
+By Amadeo Asco, April 2016.
 
 This is an implementation of a web app using Java and Spring that allows 
 customers to select products which are available to them, based on their home 
