@@ -25,10 +25,10 @@ located at the top right hand side. The views are:
 
 	3) 'Products'
 
-#### 'Home' view
+### 'Home' view
 The 'Home' view give and introduction to the web app.
 
-#### 'Customers' view
+### 'Customers' view
 The 'Customers' view list all the customer details in the data base. The 
 customer can be sorted by any of the shown columns by clicking on the 
 corresponding header. Each customer's full name can be clicked, which will 
@@ -40,7 +40,7 @@ button.
 When the 'Checkout' button is pressed the selections are sent to the web server 
 where they are printed out on the system out.
 
-#### 'Products' view
+### 'Products' view
 The 'Products' view list all the products in the database. The products can be 
 sorted by any of the shown columns by clicking on the corresponding header.
 
@@ -62,14 +62,20 @@ The Web Layer: Sprint MVC and third-party web libraries (Dandelion and Webjars).
 	
 	Webjars: Allows CSS and JS libraries to be imported as Maven libraries (http://www.webjar.org/).
 
+### Flow Diagram
+
+<p align="center">
+  <img alt="FD" src="docs/customerproducts_flowDiagram.png" width="400" title="Flow Diagram."/>
+ </p>
+
 
 ## Database
 
 <p align="center">
-  <img src="docs/customerproducts_erd.png" width="350" title="Entity Relation Diagram (ERD)."/>
+  <img alt="ERD" src="docs/customerproducts_erd.png" width="350" title="Entity Relation Diagram (ERD)."/>
  </p>
 
-#### Database configuration
+### Database configuration
 
 In its default configuration, Customerproducts uses an in-memory database 
 (HSQLDB) which gets populated at startup with data. A similar setup is provided 
