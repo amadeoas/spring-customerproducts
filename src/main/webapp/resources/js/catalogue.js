@@ -30,7 +30,7 @@ myApp.controller('selectionsController', ['$scope', '$http', '$window', function
 	    	// Send the request
 	        var data = $scope.basket;
 		
-	    	$http.post("/customerproducts/order", data).then(function successCallback() {
+	    	$http.post("/customerproducts/order", data).then(function successCallback(response) {
 	    	    // This callback will be called asynchronously when the 
 	    		// response is available
 		    	$window.location.href = '/customerproducts/order/success';
