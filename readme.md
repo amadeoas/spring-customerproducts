@@ -63,7 +63,13 @@ The Web Layer: Sprint MVC and third-party web libraries (Dandelion and Webjars).
 	Webjars: Allows CSS and JS libraries to be imported as Maven libraries (http://www.webjar.org/).
 
 
-## Database configuration
+## Database
+
+<p align="center">
+  <img src="docs/customerproducts_erd.png" width="350" title="Entity Relation Diagram (ERD)."/>
+ </p>
+
+#### Database configuration
 
 In its default configuration, Customerproducts uses an in-memory database 
 (HSQLDB) which gets populated at startup with data. A similar setup is provided 
