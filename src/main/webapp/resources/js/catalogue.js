@@ -30,8 +30,15 @@ myApp.controller('selectionsController', ['$scope', '$http', '$window', function
 	    	// Send the request
 	        var data = $scope.basket;
 		
-	    	$http.post("/customerproducts/order", data);
-	    	$window.location.href = '/customerproducts';
+	    	$http.post("/customerproducts/order", data).then(function successCallback() {
+	    	    // This callback will be called asynchronously when the 
+	    		// response is available
+		    	$window.location.href = '/customerproducts/order/success';
+	    	}, function errorCallback(response) {
+	    	    // This callback will be called asynchronously an error occurs
+	    	    // or server returns response with an error status.
+		    	$window.location.href = '/customerproducts';
+	    	});
 	    };
 }]);
 

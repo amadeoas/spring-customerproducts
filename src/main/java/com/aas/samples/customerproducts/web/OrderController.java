@@ -23,6 +23,7 @@ public class OrderController {
      * <p>Saves a customer products selection.</p>
      * 
      * <p>Expected HTTP POST and request '/order'.</p>
+     * @param model the model.
      */
     @RequestMapping(method=RequestMethod.POST)
     public String order(@RequestBody final CatalogueCategory order, 
@@ -30,7 +31,18 @@ public class OrderController {
     	// TODO: save the selections
     	System.out.println(order);
     	
-    	return "Your selections has been processed!";
+    	return "success";
+    }
+
+	/**
+     * <p>Reply with the success page.</p>
+     * 
+     * <p>Expected HTTP GET and request '/success'.</p>
+     * @param model the model.
+     */
+    @RequestMapping(value="/success", method=RequestMethod.GET)
+    public String success(final Map<String, Object> model) {
+        return "success";
     }
 
 }
