@@ -29,6 +29,8 @@ located at the top right hand side. The views are:
 
 	3) 'Products'
 
+If an exception is thrown then the .
+
 ### 'Home' view
 The 'Home' view give and introduction to the web app.
 
@@ -215,3 +217,10 @@ If m2e is not there, just follow the install process here: http://eclipse.org/m2
     </td>
   </tr>
 </table>
+
+
+## Others
+The graphics were created using <a href="https://www.draw.io/">draw.io</a>. 
+They can be modified by uploading the XML files located under the 
+<a href="/docs/">docs</a> directory from within 
+<a href="https://www.draw.io/">draw.io</a>.
