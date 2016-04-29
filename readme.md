@@ -106,7 +106,7 @@ The following items should be installed in your system:
 * Maven 3
 
 Note: when m2e is available, there is an m2 icon in Help -> About dialog.
-If m2e is not there, just follow the install process here: http://eclipse.org/m2e/download/
+If m2e is not there, just follow the install process [here](http://www.eclipse.org/m2e/).
 
 
 ### Steps:
