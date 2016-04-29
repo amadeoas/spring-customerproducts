@@ -11,14 +11,14 @@ Licensed under the Apache License, Version 2.0, see more in the [license](licens
 
 
 ## Running customerproducts locally
-``cd spring-customerproducts``
-	
-``./mvnw tomcat7:run``
+>cd spring-customerproducts
 
-You can then access customerproducts here: ``http://localhost:9966/customerproducts/``
+>./mvnw tomcat7:run
+
+You can then access customerproducts [here](http://localhost:9966/customerproducts/): ``http://localhost:9966/customerproducts/``
 
 If the web app is started from within eclipse then access customerproducts 
-here: ``http://localhost:8080/customerproducts/``
+[here](http://localhost:8080/customerproducts/): ``http://localhost:8080/customerproducts/``
 
 
 ## How to use customerproducts
@@ -26,19 +26,19 @@ here: ``http://localhost:8080/customerproducts/``
 There are three views accessible directly through the web app menu, which it is 
 located at the top right hand side. The views are:
 
-	1) 'Home'
+1) [Home](#home-view)
 
-	2) 'Customers'
+2) [Customers](#customers-view)
 
-	3) 'Products'
+3) [Products](#products-view)
 
 If an exception is thrown when processing a request by one of the controller 
 then an internal error page is displayed on the browser.
 
-### 'Home' view
+### Home view
 The 'Home' view gives an introduction to the web app.
 
-### 'Customers' view
+### Customers view
 The 'Customers' view lists all the customer details in the data base. The 
 customer can be sorted by any of the shown columns by clicking on the 
 corresponding header. Each customer's full name can be clicked, which will 
@@ -51,7 +51,7 @@ When the 'Checkout' button is pressed the selections are sent to the web server
 where they are printed out on the system out, and if this operation is 
 successful the success page is displayed.
 
-### 'Products' view
+### Products view
 The 'Products' view lists all the products in the database. The products can be 
 sorted by any of the shown columns by clicking on the corresponding header.
 
