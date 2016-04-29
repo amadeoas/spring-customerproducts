@@ -1,3 +1,4 @@
+var myApp = angular.module('myApp', []);
 
 myApp.controller('selectionsController', ['$scope', '$http', '$window', function($scope, $http, $window) {
 		$scope.basket = {
