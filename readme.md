@@ -39,10 +39,11 @@ corresponding header. Each customer's full name can be clicked, which will
 bring up the product selection view for the customer with the products the 
 customer can be subscribe to base on his/her location. This view allows 
 selecting the desired products and submit them by clicking on the 'Checkout' 
-button. If the operation is successful the success page is displayed.
+button.
 
 When the 'Checkout' button is pressed the selections are sent to the web server 
-where they are printed out on the system out.
+where they are printed out on the system out, and if this operation is 
+successful the success page is displayed.
 
 ### 'Products' view
 The 'Products' view list all the products in the database. The products can be 
