@@ -15,10 +15,10 @@ Licensed under the Apache License, Version 2.0, see more in the [license](licens
 	
 ``./mvnw tomcat7:run``
 
-You can then access customerproducts here: http://localhost:9966/customerproducts/
+You can then access customerproducts here: ``http://localhost:9966/customerproducts/``
 
 If the web app is started from within eclipse then access customerproducts 
-here: http://localhost:8080/customerproducts/
+here: ``http://localhost:8080/customerproducts/``
 
 
 ## How to use customerproducts
@@ -32,17 +32,18 @@ located at the top right hand side. The views are:
 
 	3) 'Products'
 
-If an exception is thrown then the .
+If an exception is thrown when processing a request by one of the controller 
+then an internal error page is displayed on the browser.
 
 ### 'Home' view
-The 'Home' view give and introduction to the web app.
+The 'Home' view gives an introduction to the web app.
 
 ### 'Customers' view
-The 'Customers' view list all the customer details in the data base. The 
+The 'Customers' view lists all the customer details in the data base. The 
 customer can be sorted by any of the shown columns by clicking on the 
 corresponding header. Each customer's full name can be clicked, which will 
 bring up the product selection view for the customer with the products the 
-customer can be subscribe to base on his/her location. This view allows 
+customer can be subscribed to, based on his/her location. This view allows 
 selecting the desired products and submit them by clicking on the 'Checkout' 
 button.
 
@@ -51,18 +52,18 @@ where they are printed out on the system out, and if this operation is
 successful the success page is displayed.
 
 ### 'Products' view
-The 'Products' view list all the products in the database. The products can be 
+The 'Products' view lists all the products in the database. The products can be 
 sorted by any of the shown columns by clicking on the corresponding header.
 
 
 ## Overview
-View: JSP with custom tags + bootstrap (CSS), Webjars and Dandelion
+View: JSP with custom tags + bootstrap (CSS), [Webjars](http://www.webjars.org/) and [Dandelion](http://dandelion.github.io/).
 
-Controller: Sprint and MVC annotations with bean validation
+Controller: Sprint and MVC annotations with bean validation.
 
-Service: @Cacheable and @Transactional
+Service: @Cacheable and @Transactional.
 
-Repository: 3 profiles - Sprint Data JPA, default (JPA) and jdbc
+Repository: 3 profiles - Sprint Data JPA, default (JPA) and jdbc.
 
 ---
 
@@ -76,14 +77,14 @@ The Web Layer: Sprint MVC and third-party web libraries (Dandelion and Webjars).
 
 <p align="center">
   <img alt="FD" src="docs/customerproducts_flowDiagram.png" width="400" title="Flow Diagram."/>
- </p>
+</p>
 
 
 ## Database
 
 <p align="center">
   <img alt="ERD" src="docs/customerproducts_erd.png" width="350" title="Entity Relation Diagram (ERD)."/>
- </p>
+</p>
 
 ### Database configuration
 
@@ -223,6 +224,6 @@ If m2e is not there, just follow the install process here: http://eclipse.org/m2
 
 
 ## Others
-The graphics were created using [draw.io](https://www.draw.io/"). They can be 
+The graphics were created using [draw.io](https://www.draw.io/). They can be 
 modified by uploading the XML files located under the [docs](docs/) directory 
 from within [draw.io](https://www.draw.io/").
