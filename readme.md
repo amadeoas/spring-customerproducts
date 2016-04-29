@@ -2,7 +2,7 @@
 
 By Amadeo Asco, April 2016.
 
-This is an implementation of a web app using Java and Spring that allows 
+This is an implementation of a simple web app using Java and Spring that allows 
 customers to select products which are available to them, based on their home 
 location.
 
@@ -97,7 +97,7 @@ uncommented.
 
 You may start a MySql database with docker:
 
-``docker run -e MYSQL_ROOT_PASSWORD=customerproducts -e MYSQL_DATABASE=customerproducts -p 3306:3306 mysql:5.7.8``
+>docker run -e MYSQL_ROOT_PASSWORD=customerproducts -e MYSQL_DATABASE=customerproducts -p 3306:3306 mysql:5.7.8
 
 ## Working with Customerproducts in Eclipse/STS
 
