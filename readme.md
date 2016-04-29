@@ -7,6 +7,9 @@ customers to select products which are available to them, based on their home
 location.
 
 
+Licensed under the Apache License, Version 2.0, see more in the [license](license.txt) file.
+
+
 ## Running customerproducts locally
 ``cd spring-customerproducts``
 	
@@ -220,7 +223,6 @@ If m2e is not there, just follow the install process here: http://eclipse.org/m2
 
 
 ## Others
-The graphics were created using <a href="https://www.draw.io/">draw.io</a>. 
-They can be modified by uploading the XML files located under the 
-<a href="/docs/">docs</a> directory from within 
-<a href="https://www.draw.io/">draw.io</a>.
+The graphics were created using [draw.io](https://www.draw.io/"). They can be 
+modified by uploading the XML files located under the [docs](docs/) directory 
+from within [draw.io](https://www.draw.io/").
