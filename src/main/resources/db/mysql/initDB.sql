@@ -38,3 +38,12 @@ CREATE TABLE IF NOT EXISTS products (
   FOREIGN KEY (location_id) REFERENCES locations(id),
   INDEX(name)
 ) engine=InnoDB;
+
+CREATE TABLE subscription_products (
+  id       		INTEGER IDENTITY PRIMARY KEY,
+  customer_id	INTEGER NOT NULL,
+  product_id	INTEGER NOT NULL,
+  created		TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (customer_id) REFERENCES customers(id),
+  FOREIGN KEY (product_id) REFERENCES products(id)
+) engine=InnoDB;

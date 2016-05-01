@@ -24,6 +24,9 @@
                 <a href="/customerproducts/catalogue/${customer.id}"><c:out value="${customer.firstName} ${customer.lastName}"/></a>
             </datatables:column>
             <datatables:column title="Location" property="location.name"/>
+            <datatables:column title="View">
+            	<a href="/customerproducts/subscriptions/${customer.id}"><c:out value="view"/></a>
+            </datatables:column>
         </datatables:table>
 
         <customerproducts:footer/>

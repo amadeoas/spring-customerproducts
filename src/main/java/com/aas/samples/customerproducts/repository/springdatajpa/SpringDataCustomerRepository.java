@@ -12,7 +12,7 @@ import org.springframework.data.repository.query.Param;
 
 
 /**
- * Spring Data JPA specialization of the {@link CustomerRepository} interface.
+ * Spring Data JPA specialisation of the {@link CustomerRepository} interface.
  *
  * @author Amadeo Asco
  */

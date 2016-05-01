@@ -3,8 +3,9 @@ var myApp = angular.module('myApp', []);
 myApp.controller('selectionsController', ['$scope', '$http', '$window', function($scope, $http, $window) {
 		$scope.basket = {
 				category: "Basket", 
+				customer: {id: -1},
 				products: []};
-		
+
 		$scope.change = function(productId, category, productName) {
 			var index = -1;
 
@@ -26,14 +27,16 @@ myApp.controller('selectionsController', ['$scope', '$http', '$window', function
 	    	}
 	    };
 			    
-	    $scope.sendPost = function() {
+	    $scope.sendPost = function(customerId) {
 	    	// Send the request
+	    	$scope.basket.customer.id = customerId;
+	    	
 	        var data = $scope.basket;
 		
-	    	$http.post("/customerproducts/order", data).then(function successCallback(response) {
+	    	$http.post("/customerproducts/subscriptions", data).then(function successCallback(response) {
 	    	    // This callback will be called asynchronously when the 
 	    		// response is available
-		    	$window.location.href = '/customerproducts/order/success';
+		    	$window.location.href = '/customerproducts/subscriptions/success';
 	    	}, function errorCallback(response) {
 	    	    // This callback will be called asynchronously an error occurs
 	    	    // or server returns response with an error status.

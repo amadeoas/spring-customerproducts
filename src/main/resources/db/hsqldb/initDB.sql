@@ -35,3 +35,12 @@ CREATE TABLE products (
 ALTER TABLE products ADD CONSTRAINT fk_products_categories FOREIGN KEY (category_id) REFERENCES categories (id);
 ALTER TABLE products ADD CONSTRAINT fk_products_locations FOREIGN KEY (location_id) REFERENCES locations (id);
 CREATE INDEX product_name ON products (name);
+
+CREATE TABLE subscription_products (
+  id  			INTEGER IDENTITY PRIMARY KEY,
+  customer_id	INTEGER NOT NULL,
+  product_id	INTEGER NOT NULL,
+  created		TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+ALTER TABLE subscription_products ADD CONSTRAINT fk_subscription_products_customers FOREIGN KEY (customer_id) REFERENCES customers (id);
+ALTER TABLE subscription_products ADD CONSTRAINT fk_subscription_products_products FOREIGN KEY (product_id) REFERENCES products (id);

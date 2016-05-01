@@ -41,15 +41,21 @@ The 'Home' view gives an introduction to the web app.
 ### Customers view
 The 'Customers' view lists all the customer details in the data base. The 
 customer can be sorted by any of the shown columns by clicking on the 
-corresponding header. Each customer's full name can be clicked, which will 
-bring up the product selection view for the customer with the products the 
+corresponding header.
+
+- Subscriptions Selection View: Each customer's full name can be clicked, which 
+will bring up the product selection view for the customer with the products the 
 customer can be subscribed to, based on his/her location. This view allows 
 selecting the desired products and submit them by clicking on the 'Checkout' 
-button.
+button. When the 'Checkout' button is pressed the selections are sent to the 
+web server where they are printed out on the system out, and if this operation 
+is successful the success page is displayed.
 
-When the 'Checkout' button is pressed the selections are sent to the web server 
-where they are printed out on the system out, and if this operation is 
-successful the success page is displayed.
+- Subscriptions View: The last columns (View) contains a link to each for each 
+of the customers to see his/her subscriptions.
+
+TODO: the 'Subscriptions Selection View' does not show the current 
+subscriptions for the customer.
 
 ### Products view
 The 'Products' view lists all the products in the database. The products can be 
@@ -162,7 +168,7 @@ If m2e is not there, just follow the install process [here](http://www.eclipse.o
     <td>
       <a href="/src/main/webapp/WEB-INF/jsp/customers/customersList.jsp">customersList.jsp</a>, 
       <a href="/src/main/webapp/WEB-INF/jsp/products/productList.jsp">productList.jsp</a>, 
-      <a href="/src/main/webapp/WEB-INF/jsp/products/selectionList.jsp">selectionList.jsp</a>, 
+      <a href="/src/main/webapp/WEB-INF/jsp/products/subscriptionsList.jsp">subscriptionsList.jsp</a>, 
       <a href="/src/main/webapp/WEB-INF/web.xml">web.xml</a> and 
       <a href="/src/main/resources/dandelion/datatables/datatables.properties">datatables.properties</a> 
    </td>

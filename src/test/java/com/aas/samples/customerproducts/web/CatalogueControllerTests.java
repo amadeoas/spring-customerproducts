@@ -50,7 +50,7 @@ public class CatalogueControllerTests {
     public void testInitCustomerProductsForm() throws Exception {
         this.mockMvc.perform(get("/catalogue/1"))
             .andExpect(status().isOk())
-            .andExpect(view().name("products/selectionList"));
+            .andExpect(view().name("products/subscriptionsList"));
     }
 
     @Test

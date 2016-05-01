@@ -48,9 +48,9 @@ public class JdbcCustomerRepositoryImpl implements CustomerRepository {
     public Customer findById(int id) throws DataAccessException {
         // Retrieve the customer with the specified id
         return this.jdbcTemplate.queryForObject(
-            "SELECT p.id, p.name, c, l " 
-          + "FROM products p, category c, locations l " 
-          + "WHERE p.id = " + id,
+            "SELECT c.id, c.first_name, c.last_name, l " 
+          + "FROM customers c, locations l " 
+          + "WHERE c.id = " + id,
           Customer.class);
     }
 

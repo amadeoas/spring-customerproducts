@@ -14,4 +14,3 @@ INSERT INTO products VALUES (2, 1, 2, 'Chelsea TV');
 INSERT INTO products VALUES (3, 1, 3, 'Liverpool TV');
 INSERT INTO products VALUES (4, 2, 1, 'Sky News');
 INSERT INTO products VALUES (5, 2, 1, 'Sky Sports News');
-

@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.List"%>
+<%@page import="com.aas.samples.customerproducts.model.CatalogueCategory"%>
+<%@page import="com.aas.samples.customerproducts.model.Product"%>
 <%@ page session="false" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -11,12 +15,29 @@
 
 	<jsp:include page="../fragments/htmlHeader.jsp"/>
 
+<%!
+	boolean selected(Object product) {
+//		final List<CatalogueCategory> catelogies = request.getAttribute("categories");
+//		final CatalogueCategory category = catelogies.get(catelogies.size() - 1);
+//		final Iterator<Product> iter = category.getProducts().iterator();
+//		final int productId = ((Product) product).getId();
+//
+//		while (iter.hasNext()) {
+//			if (productId == iter.next().getId()) {
+//				return true;
+//			}
+//		}
+		
+		return false;
+	}
+%>
+
 	<!-- This need angular -->
 	<body ng-app="myApp">
 		<customerproducts:bodyHeader menuName="products"/>
 		<div class="container-fluid">
 		    <div ng-controller="selectionsController" class="container xd-container">
-		        <h2>Products</h2>
+		        <h2>Subscriptions available for ${basket.customer.firstName} ${basket.customer.lastName}</h2>
 		
 				<c:forEach items="${categories}" var="category">
 			        <div id="${category.category}" class="line_layout">
@@ -28,10 +49,10 @@
 				       	</datatables:table>
 			    	</div>
 		        </c:forEach>
-			    <div id="Basket" class="line_layout">
-				    <table id="Basket" class="table table-striped">
+			    <div id="${basket.category}" class="line_layout">
+				    <table id="${basket.category}_tb" class="table table-striped">
 			            <thead>
-			                <tr><th><c:out value="{{basket.category}}" /></th></tr>
+			                <tr><th><c:out value="${basket.category}" /></th></tr>
 			            </thead>
 						<tbody>
 			                <tr ng-repeat="product in basket.products | orderBy:sortingOrder:reverse">
@@ -40,7 +61,7 @@
 	                	</tbody>
 	                </table>
 	                <div id="footer" class="footer">
-						<button type="submit" form="" value="Checkout" ng-click="sendPost(); $event.stopPropagation();" ng-disabled="basket.products.length == 0">Checkout</button>
+						<button type="submit" form="" value="Checkout" ng-click="sendPost(${basket.customer.id}); $event.stopPropagation();" ng-disabled="basket.products.length == 0">Checkout</button>
 	               	</div>
 			    </div>
 		

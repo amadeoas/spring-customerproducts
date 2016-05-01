@@ -11,7 +11,7 @@ import com.aas.samples.customerproducts.repository.CatalogueRepository;
 
 
 /**
- * Spring Data JPA specialization of the {@link CatalogueRepository} interface.
+ * Spring Data JPA specialisation of the {@link CatalogueRepository} interface.
  *
  * @author Amadeo Asco
  */
