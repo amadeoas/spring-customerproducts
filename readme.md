@@ -82,14 +82,14 @@ The Web Layer: Sprint MVC and third-party web libraries (Dandelion and Webjars).
 ### Flow Diagram
 
 <p align="center">
-  <img alt="FD" src="docs/customerproducts_flowDiagram.png" width="400" title="Flow Diagram."/>
+  <img alt="FD" src="docs/customerproducts_flowDiagram.png" width="600" title="Flow Diagram."/>
 </p>
 
 
 ## Database
 
 <p align="center">
-  <img alt="ERD" src="docs/customerproducts_erd.png" width="350" title="Entity Relation Diagram (ERD)."/>
+  <img alt="ERD" src="docs/customerproducts_erd.png" width="400" title="Entity Relation Diagram (ERD)."/>
 </p>
 
 ### Database configuration

@@ -37,7 +37,7 @@ public class SubscriptionProductController {
      * @param model the model.
      */
     @RequestMapping(method=RequestMethod.POST)
-    public String order(@RequestBody final Basket basket, final Model model) {
+    public String subscriptions(@RequestBody final Basket basket, final Model model) {
     	final Subscription subscription = new Subscription(basket);
 
     	this.subscriptionService.save(subscription);
@@ -54,7 +54,7 @@ public class SubscriptionProductController {
      * @param model the model.
      */
     @RequestMapping(value="/{customerId}", method=RequestMethod.GET, produces = "text/html")
-    public String order(@PathVariable int customerId, final Model model) {
+    public String subscriptions(@PathVariable int customerId, final Model model) {
     	final Subscription subscriptions = this.subscriptionService.findByCustomerId(customerId);
 
     	model.addAttribute("subscriptions", subscriptions);
