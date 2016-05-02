@@ -20,6 +20,21 @@ You can then access customerproducts [here](http://localhost:9966/customerproduc
 If the web app is started from within eclipse then access customerproducts 
 [here](http://localhost:8080/customerproducts/): ``http://localhost:8080/customerproducts/``
 
+Note: The unit-tests for the JPA are implemented. Other implementations like 
+JDBC and Sprint Data need to be completed for the full unit-tests to fully 
+pass.
+
+
+## Running unit-tests
+
+To run all the test execute:
+
+>./mvnw test
+
+To run an specific unit-test execute: ./mvnw -Dtest=TestsClassName test, example:
+
+>./mvnw -Dtest=CatalogueServiceJpaTests test
+
 
 ## How to use customerproducts
 

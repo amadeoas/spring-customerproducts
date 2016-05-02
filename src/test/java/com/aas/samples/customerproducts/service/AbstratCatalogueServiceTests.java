@@ -33,7 +33,7 @@ public abstract class AbstratCatalogueServiceTests {
 
 
     @Test
-    public void shouldFindAllCustomers() {
+    public void shouldFindAllProducts() {
         final Collection<Product> products = this.catalogueService.getAllProducts();
 
         assertThat(products.size()).isEqualTo(5);
@@ -41,10 +41,22 @@ public abstract class AbstratCatalogueServiceTests {
 
     @Test
     public void shouldFindProduct() {
-        final Collection<Product> products = this.catalogueService.findProducts(2);
+    	final int locationId = 2;
+        final Collection<Product> products = this.catalogueService.findProducts(locationId);
+        int iNumProductsWithoutLoc = 2;
 
-        assertThat(products.size()).isEqualTo(2);
-        assertThat(products.iterator().next().getName()).isEqualTo("LONDON");
+        assertThat(products.size()).isEqualTo(4);
+        for (final Product product : products) {
+        	final String location = product.getLocation().getName();
+
+        	// Ignore products without location
+        	if (location.length() > 0) {
+        		assertThat(location).isEqualTo("LONDON");
+        	} else {
+        		--iNumProductsWithoutLoc;
+        	}
+        }
+        assertThat(iNumProductsWithoutLoc).isEqualTo(0);
     }
 
 }
