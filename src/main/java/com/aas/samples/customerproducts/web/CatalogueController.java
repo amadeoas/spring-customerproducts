@@ -54,7 +54,7 @@ public class CatalogueController {
 	@RequestMapping(value = "/{customerId}", method = RequestMethod.GET, produces = "text/html")
     public String initCustomerProductsForm(@PathVariable int customerId, 
     		final Model model) {
-    	final Subscription subscription = this.subscriptionService.findByCustomerId(customerId);
+    	final Subscription subscription = this.subscriptionService.findBySubscriptionId(customerId);
     	final Collection<Product> products = this.catalogueService.findProducts(subscription.getCustomer().getLocation().getId());
     	final List<CatalogueCategory> categories = new ArrayList<>();
     	

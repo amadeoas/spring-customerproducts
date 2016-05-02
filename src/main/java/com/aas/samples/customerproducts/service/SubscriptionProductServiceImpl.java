@@ -34,7 +34,7 @@ public class SubscriptionProductServiceImpl implements SubscriptionProductServic
     }
 
 	@Override
-	public Subscription findByCustomerId(int customerId) {
+	public Subscription findBySubscriptionId(int customerId) {
 		final List<SubscriptionProduct> subscriptions 
 				= this.subscriptionRepository.findByCustomerId(customerId);
 		final Customer customer;

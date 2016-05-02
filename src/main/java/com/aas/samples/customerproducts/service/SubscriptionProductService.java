@@ -17,7 +17,7 @@ public interface SubscriptionProductService {
 	 * @return the subscriptions for the specified customer.
 	 * @throws DataAccessException when it has been an access problem.
 	 */
-	Subscription findByCustomerId(int customerId) throws DataAccessException;
+	Subscription findBySubscriptionId(int customerId) throws DataAccessException;
 	
 	/**
 	 * Saves the specified subscription.

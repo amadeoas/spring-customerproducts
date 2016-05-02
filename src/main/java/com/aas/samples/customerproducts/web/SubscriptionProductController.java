@@ -55,7 +55,7 @@ public class SubscriptionProductController {
      */
     @RequestMapping(value="/{customerId}", method=RequestMethod.GET, produces = "text/html")
     public String subscriptions(@PathVariable int customerId, final Model model) {
-    	final Subscription subscriptions = this.subscriptionService.findByCustomerId(customerId);
+    	final Subscription subscriptions = this.subscriptionService.findBySubscriptionId(customerId);
 
     	model.addAttribute("subscriptions", subscriptions);
     	
