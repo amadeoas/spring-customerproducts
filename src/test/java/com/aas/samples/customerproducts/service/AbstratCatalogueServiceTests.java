@@ -43,11 +43,20 @@ public abstract class AbstratCatalogueServiceTests {
     public void shouldFindProduct() {
     	final int locationId = 2;
         final Collection<Product> products = this.catalogueService.findProducts(locationId);
+        int iNumProductsWithoutLoc = 2;
 
-        assertThat(products.size()).isEqualTo(2);
+        assertThat(products.size()).isEqualTo(4);
         for (final Product product : products) {
-        	assertThat(product.getName()).isEqualTo("LONDON");
+        	final String location = product.getLocation().getName();
+
+        	// Ignore products without location
+        	if (location.length() > 0) {
+        		assertThat(location).isEqualTo("LONDON");
+        	} else {
+        		--iNumProductsWithoutLoc;
+        	}
         }
+        assertThat(iNumProductsWithoutLoc).isEqualTo(0);
     }
 
 }

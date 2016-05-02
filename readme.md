@@ -21,6 +21,20 @@ If the web app is started from within eclipse then access customerproducts
 [here](http://localhost:8080/customerproducts/): ``http://localhost:8080/customerproducts/``
 
 
+## Running unit tests
+
+To run all the unit-tests use:
+
+>./mvnw test
+
+To run an specific unit-test used the format /mvnw -Dtest=TestClassName test, example:
+
+>./mvnw -Dtest=CustomerServiceJpaTests test
+
+
+Note: Only the JPA implementation has unit-tests properly implemented and tested.
+
+
 ## How to use customerproducts
 
 There are three views accessible directly through the web app menu, which it is 
