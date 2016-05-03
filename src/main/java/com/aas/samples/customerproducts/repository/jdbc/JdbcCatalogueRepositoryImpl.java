@@ -30,14 +30,14 @@ public class JdbcCatalogueRepositoryImpl implements CatalogueRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-
+    @Override
     public Collection<Product> findAll() throws DataAccessException {
         final Collection<Product> products = new ArrayList<>();
 
         // Retrieve the list of all products
         products.addAll(this.jdbcTemplate.query(
-            "SELECT p.id, p.name, c, l " 
-          + "FROM products p, category c, locations l " 
+            "SELECT p.id, p.name, c.id, c.name, l.id, l.name " 
+          + "FROM products AS p, categories AS c, locations AS l " 
           + "WHERE p.category_id = c.id AND p.location_id = l.id " 
           + "ORDER BY c.name, p.name",
             BeanPropertyRowMapper.newInstance(Product.class)));
@@ -51,9 +51,9 @@ public class JdbcCatalogueRepositoryImpl implements CatalogueRepository {
 
         // Retrieve the list of all products for the specified location
         products.addAll(this.jdbcTemplate.query(
-            "SELECT p.id, p.name, c, l " 
-          + "FROM products p, category c, locations l " 
-          + "WHERE p.location_id = " + locationId + " AND p.category_id = c.id AND p.location_id = l.id " 
+        	"SELECT p.id, p.name, c.id, c.name, l.id, l.name " 
+          + "FROM products AS p, categories AS c, locations AS l " 
+          + "WHERE (l.id = " + locationId + " OR l.id = 1) AND p.location_id = l.id AND p.category_id = c.id " 
           + "ORDER BY c.name, p.name",
             BeanPropertyRowMapper.newInstance(Product.class)));
         
