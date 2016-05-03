@@ -1,8 +1,8 @@
-DROP TABLE product_locations IF EXISTS;
 DROP TABLE categories IF EXISTS;
 DROP TABLE products IF EXISTS;
 DROP TABLE locations IF EXISTS;
 DROP TABLE customers IF EXISTS;
+DROP TABLE subscription_products IF EXISTS;
 
 
 CREATE TABLE locations (
