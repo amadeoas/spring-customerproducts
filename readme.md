@@ -32,7 +32,7 @@ To run an specific unit-test used the format /mvnw -Dtest=TestClassName test, ex
 >./mvnw -Dtest=CustomerServiceJpaTests test
 
 
-Note: Only the JPA implementation has unit-tests properly implemented and tested.
+Note: the JPA and JDBC implementations have unit-tests implemented and tested.
 
 
 ## How to use customerproducts
