@@ -46,6 +46,7 @@ public abstract class AbstractCustomerServiceTests {
     	final int customerId = 2;
         final Customer customer = this.customerService.findCustomer(customerId);
 
+        assertThat(customer).isNotNull();
         assertThat(customer.getId()).isEqualTo(customerId);
     }
 

@@ -5,6 +5,8 @@ import com.aas.samples.customerproducts.repository.CustomerRepository;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -47,11 +49,13 @@ public class JdbcCustomerRepositoryImpl implements CustomerRepository {
     @Override
     public Customer findById(int customerId) throws DataAccessException {
         // Retrieve the customer with the specified ID
-        return this.jdbcTemplate.queryForObject(
+        final List<Customer> list = this.jdbcTemplate.query(
             "SELECT c.id, c.first_name, c.last_name, l.id, l.name " 
           + "FROM customers AS c, locations AS l " 
           + "WHERE c.id = " + customerId + " AND c.location_id = l.id",
-          Customer.class);
+          BeanPropertyRowMapper.newInstance(Customer.class));
+          
+        return list.size() > 0 ? list.get(0) : null;
     }
 
 }
