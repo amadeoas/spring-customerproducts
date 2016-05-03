@@ -33,8 +33,8 @@ public class JdbcSubscriptionProductRepositoryImpl implements SubscriptionProduc
 
 	private static final String SQL_INSERT_SP = "INSERT INTO subscription_products " 
 			+ "(id, customer_id, product_id) VALUES (?, 1, 2)";
-	private static final String SQL_DELETE_ALL_SP = "DELETE sp " 
-              + "FROM subscription_products sp " 
+	private static final String SQL_DELETE_ALL_SP = "DELETE " 
+              + "FROM subscription_products AS sp " 
               + "WHERE sp.customer_id = ";
 
 	private DataSource dataSource;
@@ -42,7 +42,9 @@ public class JdbcSubscriptionProductRepositoryImpl implements SubscriptionProduc
 
 
     @Autowired
-    public JdbcSubscriptionProductRepositoryImpl(final JdbcTemplate jdbcTemplate) {
+    public JdbcSubscriptionProductRepositoryImpl(final DataSource dataSource, 
+    		final JdbcTemplate jdbcTemplate) {
+    	this.dataSource = dataSource;
         this.jdbcTemplate = jdbcTemplate;
     }
 
@@ -63,7 +65,8 @@ public class JdbcSubscriptionProductRepositoryImpl implements SubscriptionProduc
 	@Override
 	public void save(final int customerId, final List<SubscriptionProduct> subscriptions) 
 			throws DataAccessException {
-		// Remove all. TODO: not very efficient
+		// Remove all as new list may not have some that currently are in the database.
+		// TODO: not very efficient
 		final String SQL_DELETE_ALL = SQL_DELETE_ALL_SP + customerId;
 		final Object[] aParams = {}; // // define query arguments
 		final int[] aiTypes = {}; // define SQL types of the arguments
