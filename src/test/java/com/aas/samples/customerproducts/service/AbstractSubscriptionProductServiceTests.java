@@ -36,23 +36,23 @@ public abstract class AbstractSubscriptionProductServiceTests {
     protected SubscriptionProductService subscriptionProductService;
 
 
-    @Test
-    public void shouldSave() {
-    	final Location location = new Location();
-    	final Customer customer = new Customer();
-    	final List<SubscriptionProduct> products = new ArrayList<>();
-    	final Subscription subscription;
-    	
-    	location.setId(2);
-    	location.setName("LONDON");
-    	customer.setId(2);
-    	customer.setFirstName("James");
-    	customer.setLastName("Carter");
-    	customer.setLocation(location);
-    	subscription = new Subscription(customer, products);
-
-    	this.subscriptionProductService.save(subscription);
-    }
+//    @Test
+//    public void shouldSave() {
+//    	final Location location = new Location();
+//    	final Customer customer = new Customer();
+//    	final List<SubscriptionProduct> products = new ArrayList<>();
+//    	final Subscription subscription;
+//    	
+//    	location.setId(2);
+//    	location.setName("LONDON");
+//    	customer.setId(2);
+//    	customer.setFirstName("James");
+//    	customer.setLastName("Carter");
+//    	customer.setLocation(location);
+//    	subscription = new Subscription(customer, products);
+//
+//    	this.subscriptionProductService.save(subscription);
+//    }
 
     @Test
     public void shouldSubscription() {

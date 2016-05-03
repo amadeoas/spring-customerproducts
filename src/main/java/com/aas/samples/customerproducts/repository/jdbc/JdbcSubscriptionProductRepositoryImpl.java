@@ -1,7 +1,9 @@
 package com.aas.samples.customerproducts.repository.jdbc;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.tomcat.jdbc.pool.DataSource;
@@ -9,8 +11,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.stereotype.Repository;
 
+import com.aas.samples.customerproducts.model.Category;
+import com.aas.samples.customerproducts.model.Customer;
+import com.aas.samples.customerproducts.model.Location;
+import com.aas.samples.customerproducts.model.Product;
 import com.aas.samples.customerproducts.model.SubscriptionProduct;
 import com.aas.samples.customerproducts.repository.SubscriptionProductRepository;
 
@@ -44,14 +51,13 @@ public class JdbcSubscriptionProductRepositoryImpl implements SubscriptionProduc
 	}
 
 	@Override
-	@SuppressWarnings("unchecked")
 	public List<SubscriptionProduct> findByCustomerId(int customerId) 
 			throws DataAccessException {
-		return this.jdbcTemplate.queryForObject(
-                "SELECT s " 
-              + "FROM subscription_products sp " 
-              + "WHERE sp.customer_id = " + customerId,
-              List.class);
+		return this.jdbcTemplate.query(
+                "SELECT sp.id, sp.created, c.id, c.first_name, c.last_name, l.id, l.name, p.id, p.name, ca.id, ca.name " 
+              + "FROM subscription_products AS sp, customers AS c, locations AS l, products AS p, categories AS ca " 
+              + "WHERE sp.customer_id = " + customerId + " AND sp.customer_id = c.id AND c.location_id = l.id AND sp.product_id = p.id AND p.category_id = ca.id",
+              new ManySubscriptionProductExtractor());
 	}
 
 	@Override
@@ -87,5 +93,73 @@ public class JdbcSubscriptionProductRepositoryImpl implements SubscriptionProduc
 
 		});
 	}
+
+    
+    /**
+     * Used to fetch subscription from the database.
+     * 
+     * @author aasco
+     */
+    public class ManySubscriptionProductExtractor implements ResultSetExtractor<List<SubscriptionProduct>> {
+    	
+    	@Override
+    	public List<SubscriptionProduct> extractData(final ResultSet rs) throws DataAccessException, 
+    			SQLException {
+    		final List<SubscriptionProduct> list = new ArrayList<>();
+    		Customer customer = null;
+
+    		while (rs.next()) {
+    			final SubscriptionProduct sp = build(rs, customer);
+    			
+    			if (customer == null) {
+    				customer = sp.getCustomer();
+    			}
+
+    			list.add(sp);
+    		}
+
+    	    return list;
+    	}
+    	
+    	private SubscriptionProduct build(final ResultSet rs, Customer customer) 
+    			throws SQLException {
+    		final SubscriptionProduct sp = new SubscriptionProduct();
+			final Product product = new Product();
+			final Category category;
+
+			sp.setId(rs.getInt(1));
+			sp.setCreated(rs.getTimestamp(2));
+			
+			if (customer == null) {
+				final Location location = new Location();
+
+				customer = new Customer();
+				customer.setId(rs.getInt(3));
+				customer.setFirstName(rs.getString(4));
+				customer.setLastName(rs.getString(5));
+
+				location.setId(rs.getInt(6));
+				location.setName(rs.getString(7));
+				customer.setLocation(location);
+			}
+				
+			sp.setCustomer(customer);
+
+			category = new Category();
+
+			product.setId(rs.getInt(8));
+			product.setName(rs.getString(9));
+			product.setLocation(customer.getLocation());
+			
+			category.setId(rs.getInt(10));
+			category.setName(rs.getString(11));
+			product.setCategory(category);
+			
+			sp.setProduct(product);
+			
+			return sp;
+    	}
+
+    }
 
 }

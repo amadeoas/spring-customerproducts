@@ -52,7 +52,7 @@ public class SubscriptionProduct extends BaseEntity {
     	return this.product;
     }
     
-    public void setOrder(final Product product) {
+    public void setProduct(final Product product) {
     	this.product = product;
     }
 
