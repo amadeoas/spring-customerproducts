@@ -36,7 +36,7 @@ public class JdbcCustomerRepositoryImpl implements CustomerRepository {
         // Retrieve the list of all customers
         customers.addAll(this.jdbcTemplate.query(
             "SELECT c.id, c.first_name, c.last_name, l.id, l.name " 
-          + "FROM customer AS c, location AS l " 
+          + "FROM customers AS c, locations AS l " 
           + "WHERE c.location_id = l.id " 
           + "ORDER BY c.first_name, c.last_name",
             BeanPropertyRowMapper.newInstance(Customer.class)));
@@ -45,12 +45,12 @@ public class JdbcCustomerRepositoryImpl implements CustomerRepository {
     }
     
     @Override
-    public Customer findById(int id) throws DataAccessException {
+    public Customer findById(int customerId) throws DataAccessException {
         // Retrieve the customer with the specified ID
         return this.jdbcTemplate.queryForObject(
             "SELECT c.id, c.first_name, c.last_name, l.id, l.name " 
-          + "FROM customer AS c, location AS l " 
-          + "WHERE c.id = " + id + " AND c.location_id = l.id ",
+          + "FROM customers AS c, locations AS l " 
+          + "WHERE c.id = " + customerId + " AND c.location_id = l.id",
           Customer.class);
     }
 
