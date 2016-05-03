@@ -37,6 +37,13 @@ public abstract class AbstratCatalogueServiceTests {
         final Collection<Product> products = this.catalogueService.getAllProducts();
 
         assertThat(products.size()).isEqualTo(5);
+        for (final Product product : products) {
+        	assertThat(product).isNotNull();
+        	assertThat(product.getCategory()).isNotNull();
+        	assertThat(product.getCategory().getName()).isNotNull();
+        	assertThat(product.getLocation()).isNotNull();
+        	assertThat(product.getLocation().getName()).isNotNull();
+        }
     }
 
     @Test
@@ -47,13 +54,17 @@ public abstract class AbstratCatalogueServiceTests {
 
         assertThat(products.size()).isEqualTo(4);
         for (final Product product : products) {
-        	final String location = product.getLocation().getName();
+        	assertThat(product).isNotNull();
+        	assertThat(product.getCategory()).isNotNull();
+        	assertThat(product.getCategory().getName()).isNotNull();
+        	assertThat(product.getLocation()).isNotNull();
+        	assertThat(product.getLocation().getName()).isNotNull();
 
         	// Ignore products without location
-        	if (location.length() > 0) {
-        		assertThat(location).isEqualTo("LONDON");
-        	} else {
+        	if (product.getLocation().getId() == 1) {
         		--iNumProductsWithoutLoc;
+        	} else {
+        		assertThat(product.getLocation().getName()).isEqualTo("LONDON");
         	}
         }
         assertThat(iNumProductsWithoutLoc).isEqualTo(0);
