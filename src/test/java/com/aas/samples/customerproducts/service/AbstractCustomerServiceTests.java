@@ -39,6 +39,10 @@ public abstract class AbstractCustomerServiceTests {
         		= this.customerService.getAllCustomers();
 
         assertThat(customers.size()).isEqualTo(3);
+        for (final Customer customer : customers) {
+            assertThat(customer).isNotNull();
+            assertThat(customer.getLocation()).isNotNull();
+        }
     }
 
     @Test
@@ -48,6 +52,7 @@ public abstract class AbstractCustomerServiceTests {
 
         assertThat(customer).isNotNull();
         assertThat(customer.getId()).isEqualTo(customerId);
+        assertThat(customer.getLocation()).isNotNull();
     }
 
 }
