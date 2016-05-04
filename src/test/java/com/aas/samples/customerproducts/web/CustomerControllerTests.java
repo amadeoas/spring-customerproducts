@@ -14,6 +14,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import com.aas.samples.customerproducts.web.CustomersController;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
@@ -44,7 +45,8 @@ public class CustomerControllerTests {
     public void testProcessFindFormSuccess() throws Exception {
         this.mockMvc.perform(get("/customers"))
             .andExpect(status().isOk())
-            .andExpect(view().name("customers/customersList"));
+            .andExpect(view().name("customers/customersList"))
+            .andExpect(forwardedUrl("customers/customersList"));
     }
 
 }

@@ -1,8 +1,7 @@
 package com.aas.samples.customerproducts.web;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -38,6 +37,7 @@ public class CatalogueControllerTests {
 
     private MockMvc mockMvc;
 
+
     @Before
     public void setup() {
         this.mockMvc = MockMvcBuilders
@@ -47,17 +47,19 @@ public class CatalogueControllerTests {
     }
 
     @Test
-    public void testInitCustomerProductsForm() throws Exception {
-        this.mockMvc.perform(get("/catalogue/1"))
+    public void testInitCatalogueProductsForm() throws Exception {
+        this.mockMvc.perform(get("/catalogue/{customerId}", 1))
             .andExpect(status().isOk())
-            .andExpect(view().name("products/subscriptionsList"));
+            .andExpect(view().name("products/subscriptionsList"))
+            .andExpect(forwardedUrl("products/subscriptionsList"));
     }
 
     @Test
     public void testInitList() throws Exception {
         this.mockMvc.perform(get("/catalogue"))
             .andExpect(status().isOk())
-            .andExpect(view().name("products/productList"));
+            .andExpect(view().name("products/productList"))
+            .andExpect(forwardedUrl("products/productList"));
     }
 
 }

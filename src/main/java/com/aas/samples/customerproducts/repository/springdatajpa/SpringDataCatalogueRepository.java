@@ -4,8 +4,6 @@ import java.util.Collection;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
-import org.springframework.data.repository.query.Param;
-
 import com.aas.samples.customerproducts.model.Product;
 import com.aas.samples.customerproducts.repository.CatalogueRepository;
 
@@ -18,11 +16,11 @@ import com.aas.samples.customerproducts.repository.CatalogueRepository;
 public interface SpringDataCatalogueRepository extends CatalogueRepository, Repository<Product, Integer> {
 
     @Override
-    @Query("SELECT DISTINCT p, c, l FROM products p, categories c, locations l ORDER c.name, p.name")
+    @Query("SELECT p FROM Product p ORDER BY p.category.name, p.name")
     public Collection<Product> findAll();
 
     @Override
-    @Query("SELECT p, c, l FROM products p, categories c, locations l WHERE p.location_id =:id ORDER c.name, p.name")
-    public Collection<Product> findByLocation(@Param("id") int locationId);
+    @Query(value = "SELECT p FROM Product p WHERE p.location.id = ?1 ORDER BY p.category.name, p.name", nativeQuery = true)
+    public Collection<Product> findByLocation(int locationId);
 
 }

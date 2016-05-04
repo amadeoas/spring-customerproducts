@@ -22,7 +22,7 @@ public interface SpringDataCustomerRepository extends CustomerRepository, Reposi
     Collection<Customer> findAll() throws DataAccessException;
 
     @Override
-    @Query("SELECT c FROM Customer c WHERE c.id = ?0 ORDER BY c.lastName, c.firstName")
+    @Query("SELECT c FROM Customer c WHERE c.id = ?1 ORDER BY c.lastName, c.firstName")
     Customer findById(int customerId);
 
 }
