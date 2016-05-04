@@ -31,7 +31,9 @@ public interface SubscriptionProductRepository {
     /**
      * Saves the specified <code>Subscription</code>.
      *
-     * @param customerId the customer's ID.
+     * @param customerId the customer's ID. It is needed in the case of the 
+     * 			list is empty so we need to delete all entries for that 
+     * 			customer.
      * @param subscription the subscription.
      */
     void save(int customerId, List<SubscriptionProduct> subscriptions) 
