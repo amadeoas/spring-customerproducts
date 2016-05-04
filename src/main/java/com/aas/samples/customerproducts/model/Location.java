@@ -5,7 +5,7 @@ import javax.persistence.Table;
 
 
 /**
- * Model of a {@link LOCATION} (for example, LONDON).
+ * Model of a {@link Location} (for example, LONDON).
  *
  * @author Amadeo Asco
  */

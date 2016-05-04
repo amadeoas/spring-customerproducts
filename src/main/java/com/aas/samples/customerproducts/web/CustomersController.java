@@ -42,6 +42,7 @@ public class CustomersController {
      * <p>Expected HTTP GET and request '/customer'.</p>
      * 
      * @param model the model.
+     * @return the template.
      */
     @RequestMapping(method = RequestMethod.GET)
     public String initList(final Model model) {

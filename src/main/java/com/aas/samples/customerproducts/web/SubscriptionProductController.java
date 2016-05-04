@@ -35,6 +35,7 @@ public class SubscriptionProductController {
      * 
      * <p>Expected HTTP POST and request '/subscriptions'.</p>
      * @param model the model.
+     * @return the template.
      */
     @RequestMapping(method=RequestMethod.POST)
     public String subscriptions(@RequestBody final Basket basket, final Model model) {
@@ -52,6 +53,7 @@ public class SubscriptionProductController {
      * 
      * @param customerId the customer's ID.
      * @param model the model.
+     * @return the template.
      */
     @RequestMapping(value="/{customerId}", method=RequestMethod.GET, produces = "text/html")
     public String subscriptions(@PathVariable int customerId, final Model model) {
@@ -67,6 +69,7 @@ public class SubscriptionProductController {
      * 
      * <p>Expected HTTP GET and request '/success'.</p>
      * @param model the model.
+     * @return the template.
      */
     @RequestMapping(value="/success", method=RequestMethod.GET)
     public String success(final Model model) {

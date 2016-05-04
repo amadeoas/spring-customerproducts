@@ -50,6 +50,7 @@ public class CatalogueController {
      * 
      * @param customerId the customer's ID.
      * @param model the model.
+     * @return the template.
      */
 	@RequestMapping(value = "/{customerId}", method = RequestMethod.GET, produces = "text/html")
     public String initCustomerProductsForm(@PathVariable int customerId, 
@@ -86,6 +87,7 @@ public class CatalogueController {
      * <p>Expected HTTP GET and request '/subscriptions'.</p>
      * 
      * @param model the model.
+     * @return the template.
      */
     @RequestMapping(method = RequestMethod.GET)
     public String initList(final Model model) {
