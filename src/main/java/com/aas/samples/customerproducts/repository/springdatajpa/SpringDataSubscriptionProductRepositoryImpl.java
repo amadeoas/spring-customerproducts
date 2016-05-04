@@ -19,7 +19,7 @@ public interface SpringDataSubscriptionProductRepositoryImpl
 		extends SubscriptionProductRepository, Repository<SubscriptionProduct, Integer> {
 
     @Override
-    @Query("SELECT sp FROM SubscriptionProduct sp WHERE sp.customer.id = ?0")
+    @Query("SELECT sp FROM SubscriptionProduct sp WHERE sp.customer.id = ?1")
 	public List<SubscriptionProduct> findByCustomerId(int customerId) 
 			throws DataAccessException;
 

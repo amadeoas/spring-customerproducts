@@ -20,7 +20,7 @@ public interface SpringDataCatalogueRepository extends CatalogueRepository, Repo
     public Collection<Product> findAll();
 
     @Override
-    @Query(value = "SELECT p FROM Product p WHERE p.location.id = ?1 ORDER BY p.category.name, p.name", nativeQuery = true)
+    @Query("SELECT p FROM Product p JOIN p.location l JOIN p.category c WHERE l.id = ?1 OR l.id = 1 ORDER BY c.name, p.name")
     public Collection<Product> findByLocation(int locationId);
 
 }
