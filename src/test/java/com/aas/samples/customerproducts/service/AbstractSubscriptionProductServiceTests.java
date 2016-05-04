@@ -55,7 +55,7 @@ public abstract class AbstractSubscriptionProductServiceTests {
     }
 
     @Test
-    public void shouldSubscription() {
+    public void shouldGetSubscription() {
     	final int customerId = 2;
         final Subscription subscription = this.subscriptionProductService.findBySubscriptionId(customerId);
 

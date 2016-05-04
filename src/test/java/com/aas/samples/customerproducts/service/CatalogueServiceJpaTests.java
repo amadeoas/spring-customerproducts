@@ -10,11 +10,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * Integration test using the jpa profile.
  *
  * @author Amadeo Asco
- * @see AbstratCatalogueServiceTests for more details.
+ * @see AbstractCatalogueServiceTests for more details.
  */
 @ContextConfiguration(locations = {"classpath:spring/business-config.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)
 @ActiveProfiles("jpa")
-public class CatalogueServiceJpaTests extends AbstratCatalogueServiceTests {
+public class CatalogueServiceJpaTests extends AbstractCatalogueServiceTests {
 
 }

@@ -10,11 +10,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * Integration test using the jdbc profile.</p>
  *
  * @author Amadeo Asco
- * @see AbstratCatalogueServiceTests for more details.
+ * @see AbstractCatalogueServiceTests for more details.
  */
 @ContextConfiguration(locations = {"classpath:spring/business-config.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)
 @ActiveProfiles("jdbc")
-public class CatalogueServiceJdbcTests extends AbstratCatalogueServiceTests {
+public class CatalogueServiceJdbcTests extends AbstractCatalogueServiceTests {
 
 }

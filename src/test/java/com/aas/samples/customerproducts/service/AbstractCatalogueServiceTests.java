@@ -26,7 +26,7 @@ import com.aas.samples.customerproducts.model.Product;
  *
  * @author Amadeo Asco
  */
-public abstract class AbstratCatalogueServiceTests {
+public abstract class AbstractCatalogueServiceTests {
 
     @Autowired
     protected CatalogueService catalogueService;
