@@ -247,3 +247,8 @@ If m2e is not there, just follow the install process [here](http://www.eclipse.o
 The graphics were created using [draw.io](https://www.draw.io/). They can be 
 modified by uploading the XML files located under the [docs](docs/) directory 
 from within [draw.io](https://www.draw.io/").
+
+### TODO
+- Add support to change the language from any of the views, currently only two languages have translations English and Spanish.
+- Complete the unit-tests for the Sprint Data JPA implementation
+- The "Checkout" button should be at the bottom of the basket area, fixed. Also areas for each product should be possible to scroll if not all products or selections fit in the area..
