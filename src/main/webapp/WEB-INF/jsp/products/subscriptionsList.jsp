@@ -13,11 +13,12 @@
 
 <html lang="${language}">
 
+	<fmt:setLocale value="${language}"/>
 	<jsp:include page="../fragments/htmlHeader.jsp"/>
 
 	<!-- This need angular -->
 	<body ng-app="myApp">
-		<customerproducts:bodyHeader menuName="products"/>
+		<customerproducts:bodyHeader menuName="subscriptionList"/>
 		<div class="container-fluid">
 		    <div id="selectionsController" ng-controller="selectionsController" class="container xd-container" ng-init="getBasket(${basket.customer.id})">
 		        <h2><fmt:message key="subscriptionsAvaliable"/>${basket.customer.firstName} ${basket.customer.lastName}</h2>

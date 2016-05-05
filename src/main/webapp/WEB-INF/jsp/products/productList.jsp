@@ -9,6 +9,16 @@
 
 <html lang="${language}">
 
+<fmt:setLocale value="${language}"/>
+<c:set var="msg_category" scope="request">
+	<fmt:message key="tbCategory"/>
+</c:set>
+<c:set var="msg_name" scope="request">
+	<fmt:message key="tbName"/>
+</c:set>
+<c:set var="msg_location" scope="request">
+	<fmt:message key="tbLocation"/>
+</c:set>
 <jsp:include page="../fragments/htmlHeader.jsp"/>
 
 <body>
@@ -19,13 +29,13 @@
 
         <datatables:table id="products" data="${products}" row="product" cssClass="table table-striped"
                           pageable="false" info="false">
-            <datatables:column title="Category">
+            <datatables:column title="${msg_category}">
                 <c:out value="${product.category.name}"/>
             </datatables:column>
-            <datatables:column title="Name">
+            <datatables:column title="${msg_name}">
                 <c:out value="${product.name}"/>
             </datatables:column>
-            <datatables:column title="Location">
+            <datatables:column title="${msg_location}">
                 <c:out value="${product.location.name}"/>
             </datatables:column>
         </datatables:table>

@@ -9,27 +9,40 @@
 
 <html lang="${language}">
 
+	<fmt:setLocale value="${language}"/>
+	<c:set var="msg_category" scope="request">
+		<fmt:message key="tbCategory"/>
+	</c:set>
+	<c:set var="msg_name" scope="request">
+		<fmt:message key="tbName"/>
+	</c:set>
+	<c:set var="msg_location" scope="request">
+		<fmt:message key="tbLocation"/>
+	</c:set>
+	<c:set var="msg_from" scope="request">
+		<fmt:message key="timestamp"/>
+	</c:set>
 	<jsp:include page="../fragments/htmlHeader.jsp"/>
 
 	<!-- This need angular -->
 	<body>
-		<customerproducts:bodyHeader menuName="products"/>
+		<customerproducts:bodyHeader menuName="subscriptions"/>
 		<div class="container-fluid">
 		    <div class="container xd-container">
 		        <h2><fmt:message key="currentSubscriptions"/> ${subscriptions.customer.firstName} ${subscriptions.customer.lastName}</h2>
 
         		<datatables:table id="products" data="${subscriptions.products}" row="sp" cssClass="table table-striped"
                           pageable="false" info="false">
-		            <datatables:column title="Category">
+		            <datatables:column title="${msg_category}">
 			            <c:out value="${sp.product.category.name}"/>
 			        </datatables:column>
-			        <datatables:column title="Name">
+			        <datatables:column title="${msg_name}">
 			            <c:out value="${sp.product.name}"/>
 			        </datatables:column>
-		            <datatables:column title="Location">
+		            <datatables:column title="${msg_location}">
 		                <c:out value="${sp.product.location.name}"/>
 		            </datatables:column>
-		            <datatables:column title="From">
+		            <datatables:column title="${msg_from}">
 		                <c:out value="${sp.created}"/>
 		            </datatables:column>
 			    </datatables:table>

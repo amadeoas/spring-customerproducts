@@ -6,11 +6,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="customerproducts" tagdir="/WEB-INF/tags" %>
 
+<fmt:setLocale value="${language}"/>
 <html lang="${language}">
 <jsp:include page="fragments/htmlHeader.jsp"/>
 
 <body>
-<customerproducts:bodyHeader menuName="error"/>
+<customerproducts:bodyHeader menuName="success"/>
 <div class="container-fluid">
     <div class="container xd-container">
 		<div class="left">

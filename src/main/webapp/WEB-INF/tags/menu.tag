@@ -5,6 +5,8 @@
 <%@ attribute name="name" required="true" rtexprvalue="true"
               description="Name of the active menu: home, customers, or products" %>
 
+<fmt:setLocale value="${language}"/>
+
 <%-- Static navbar --%>
 <nav class="navbar navbar-default" role="navigation">
     <div class="container">
