@@ -15,23 +15,6 @@
 
 	<jsp:include page="../fragments/htmlHeader.jsp"/>
 
-<%!
-	boolean selected(Object product) {
-//		final List<CatalogueCategory> catelogies = request.getAttribute("categories");
-//		final CatalogueCategory category = catelogies.get(catelogies.size() - 1);
-//		final Iterator<Product> iter = category.getProducts().iterator();
-//		final int productId = ((Product) product).getId();
-//
-//		while (iter.hasNext()) {
-//			if (productId == iter.next().getId()) {
-//				return true;
-//			}
-//		}
-		
-		return false;
-	}
-%>
-
 	<!-- This need angular -->
 	<body ng-app="myApp">
 		<customerproducts:bodyHeader menuName="products"/>
@@ -61,7 +44,7 @@
 	                	</tbody>
 	                </table>
 	                <div id="footer" class="footer">
-						<button type="submit" form="" value="Checkout" ng-click="sendPost(${basket.customer.id}); $event.stopPropagation();" ng-disabled="basket.products.length == 0">Checkout</button>
+						<button type="submit" form="" value="Checkout" ng-click="sendPost(${basket.customer.id}); $event.stopPropagation();" ng-disabled="basket.products.length == 0" class="btn_bottom">Checkout</button>
 	               	</div>
 			    </div>
 		
