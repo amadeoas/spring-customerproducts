@@ -29,6 +29,11 @@ public class CustomerServiceImpl implements CustomerService {
         this.customerRepository = customerRepository;
     }
 
+	@Override
+	public Customer findCustomer(int customerId) throws DataAccessException {
+		return this.customerRepository.findById(customerId);
+	}
+
     @Override
     @Transactional(readOnly = true)
     public Collection<Customer> getAllCustomers() throws DataAccessException {

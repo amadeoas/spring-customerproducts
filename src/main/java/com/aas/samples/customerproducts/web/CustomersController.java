@@ -1,14 +1,13 @@
 package com.aas.samples.customerproducts.web;
 
-import java.util.Collection;
-import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.aas.samples.customerproducts.model.Customer;
 import com.aas.samples.customerproducts.service.CustomerService;
 
+import java.util.Collection;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,15 +39,17 @@ public class CustomersController {
 	/**
      * <p>Retrieves a list of all the customers.</p>
      * 
-     * <p>Expected HTTP GET and request '/order'.</p>
+     * <p>Expected HTTP GET and request '/customer'.</p>
      * 
      * @param model the model.
+     * @return the template.
      */
     @RequestMapping(method = RequestMethod.GET)
-    public String initList(final Map<String, Object> model) {
+    public String initList(final Model model) {
     	final Collection<Customer> customers = this.customerService.getAllCustomers();
 
-    	model.put("customers", customers);
+    	model.addAttribute("language","en");
+    	model.addAttribute("customers", customers);
 
         return "customers/customersList";
     }

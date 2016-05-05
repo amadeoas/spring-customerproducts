@@ -41,7 +41,7 @@ public class Customer extends Person {
      *
      * @param location new value for the location.
      */
-    public void setPet(final Location location) {
+    public void setLocation(final Location location) {
         this.location = location;
     }
 

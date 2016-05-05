@@ -11,6 +11,7 @@ import org.springframework.dao.DataAccessException;
 public interface CustomerLocationService {
 
     /**
+     * @param customerId the customer's ID.
      * @return the locations ID associated with the specified customer.
 	 * @throws DataAccessException when it has been an access problem.
      */

@@ -2,10 +2,11 @@
 
 <%@ page session="false" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="customerproducts" tagdir="/WEB-INF/tags" %>
 
-<html lang="en">
+<html lang="${language}">
 <jsp:include page="fragments/htmlHeader.jsp"/>
 
 <body>
@@ -20,9 +21,9 @@
         </div>
 
 		<div class="right">
-	        <h2>Success</h2>
+	        <h2><fmt:message key="success"/></h2>
 	
-	        <p>The selected products were received and processed.</p>
+	        <p><fmt:message key="successMsg"/></p>
 	  	</div>
     </div>
     <customerproducts:footer/>

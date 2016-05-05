@@ -22,10 +22,12 @@ public abstract class EntityUtils {
      * @param entities    the collection to search.
      * @param entityClass the entity class to look up.
      * @param entityId    the entity id to look up.
+     * @param <T>		  the data class.
      * @return the found entity.
      * @throws ObjectRetrievalFailureException if the entity was not found.
      */
-    public static <T extends BaseEntity> T getById(Collection<T> entities, Class<T> entityClass, int entityId)
+    public static <T extends BaseEntity> T getById(final Collection<T> entities, 
+    		final Class<T> entityClass, final int entityId)
     		throws ObjectRetrievalFailureException {
         for (final T entity : entities) {
             if (entity.getId() == entityId && entityClass.isInstance(entity)) {

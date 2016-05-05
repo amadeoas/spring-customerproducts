@@ -1,7 +1,9 @@
 package com.aas.samples.customerproducts.web;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -15,8 +17,6 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import com.aas.samples.customerproducts.web.CatalogueController;
-
 
 /**
  * Test class for the {@link CatalogueController}.
@@ -27,39 +27,43 @@ import com.aas.samples.customerproducts.web.CatalogueController;
 @ContextConfiguration({"classpath:spring/business-config.xml", "classpath:spring/tools-config.xml", "classpath:spring/mvc-core-config.xml"})
 @WebAppConfiguration
 @ActiveProfiles("spring-data-jpa")
-public class CatalogueControllerTests {
+public class SubscriptionProductControllerTests {
 
     @Autowired
-    private CatalogueController catalogueController;
+    private SubscriptionProductController subscriptionProductController;
 
     @Autowired
     private FormattingConversionServiceFactoryBean formattingConversionServiceFactoryBean;
 
     private MockMvc mockMvc;
 
-
     @Before
     public void setup() {
         this.mockMvc = MockMvcBuilders
-            .standaloneSetup(this.catalogueController)
+            .standaloneSetup(this.subscriptionProductController)
             .setConversionService(this.formattingConversionServiceFactoryBean.getObject())
             .build();
     }
 
     @Test
-    public void testInitCatalogueProductsForm() throws Exception {
-        this.mockMvc.perform(get("/catalogue/{customerId}", 1))
+    public void testInitCustomerProductsForm() throws Exception {
+        this.mockMvc.perform(get("/subscriptions/1"))
             .andExpect(status().isOk())
-            .andExpect(view().name("products/subscriptionsList"))
-            .andExpect(forwardedUrl("products/subscriptionsList"));
+            .andExpect(view().name("subscriptions/subscriptions"));
     }
 
     @Test
     public void testInitList() throws Exception {
-        this.mockMvc.perform(get("/catalogue"))
+        this.mockMvc.perform(post("/subscriptions"))
             .andExpect(status().isOk())
-            .andExpect(view().name("products/productList"))
-            .andExpect(forwardedUrl("products/productList"));
+            .andExpect(view().name("products/productList"));
+    }
+
+    @Test
+    public void testSuccess() throws Exception {
+        this.mockMvc.perform(get("/subscriptions/success"))
+            .andExpect(status().isOk())
+            .andExpect(view().name("success"));
     }
 
 }

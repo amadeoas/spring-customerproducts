@@ -1,6 +1,6 @@
 # Spring Customer Products Application
 
-By Amadeo Asco, April 2016.
+By Amadeo Ascó, April 2016.
 
 This is an implementation of a simple web app using Java and Spring that allows 
 customers to select products which are available to them, based on their home 
@@ -36,6 +36,20 @@ To run an specific unit-test execute: ./mvnw -Dtest=TestsClassName test, example
 >./mvnw -Dtest=CatalogueServiceJpaTests test
 
 
+## Running unit tests
+
+To run all the unit-tests use:
+
+>./mvnw test
+
+To run an specific unit-test used the format /mvnw -Dtest=TestClassName test, example:
+
+>./mvnw -Dtest=CustomerServiceJpaTests test
+
+
+Note: the JPA and JDBC implementations have unit-tests implemented and tested.
+
+
 ## How to use customerproducts
 
 There are three views accessible directly through the web app menu, which it is 
@@ -56,15 +70,21 @@ The 'Home' view gives an introduction to the web app.
 ### Customers view
 The 'Customers' view lists all the customer details in the data base. The 
 customer can be sorted by any of the shown columns by clicking on the 
-corresponding header. Each customer's full name can be clicked, which will 
-bring up the product selection view for the customer with the products the 
+corresponding header.
+
+- Subscriptions Selection View: Each customer's full name can be clicked, which 
+will bring up the product selection view for the customer with the products the 
 customer can be subscribed to, based on his/her location. This view allows 
 selecting the desired products and submit them by clicking on the 'Checkout' 
-button.
+button. When the 'Checkout' button is pressed the selections are sent to the 
+web server where they are printed out on the system out, and if this operation 
+is successful the success page is displayed.
 
-When the 'Checkout' button is pressed the selections are sent to the web server 
-where they are printed out on the system out, and if this operation is 
-successful the success page is displayed.
+- Subscriptions View: The last columns (View) contains a link to each for each 
+of the customers to see his/her subscriptions.
+
+TODO: the 'Subscriptions Selection View' does not show the current 
+subscriptions for the customer.
 
 ### Products view
 The 'Products' view lists all the products in the database. The products can be 
@@ -91,14 +111,14 @@ The Web Layer: Sprint MVC and third-party web libraries (Dandelion and Webjars).
 ### Flow Diagram
 
 <p align="center">
-  <img alt="FD" src="docs/customerproducts_flowDiagram.png" width="400" title="Flow Diagram."/>
+  <img alt="FD" src="docs/customerproducts_flowDiagram.png" width="600" title="Flow Diagram."/>
 </p>
 
 
 ## Database
 
 <p align="center">
-  <img alt="ERD" src="docs/customerproducts_erd.png" width="350" title="Entity Relation Diagram (ERD)."/>
+  <img alt="ERD" src="docs/customerproducts_erd.png" width="400" title="Entity Relation Diagram (ERD)."/>
 </p>
 
 ### Database configuration
@@ -177,7 +197,7 @@ If m2e is not there, just follow the install process [here](http://www.eclipse.o
     <td>
       <a href="/src/main/webapp/WEB-INF/jsp/customers/customersList.jsp">customersList.jsp</a>, 
       <a href="/src/main/webapp/WEB-INF/jsp/products/productList.jsp">productList.jsp</a>, 
-      <a href="/src/main/webapp/WEB-INF/jsp/products/selectionList.jsp">selectionList.jsp</a>, 
+      <a href="/src/main/webapp/WEB-INF/jsp/products/subscriptionsList.jsp">subscriptionsList.jsp</a>, 
       <a href="/src/main/webapp/WEB-INF/web.xml">web.xml</a> and 
       <a href="/src/main/resources/dandelion/datatables/datatables.properties">datatables.properties</a> 
    </td>
@@ -242,3 +262,8 @@ If m2e is not there, just follow the install process [here](http://www.eclipse.o
 The graphics were created using [draw.io](https://www.draw.io/). They can be 
 modified by uploading the XML files located under the [docs](docs/) directory 
 from within [draw.io](https://www.draw.io/").
+
+### TODO
+- Add support to change the language from any of the views, currently only two languages have translations English and Spanish.
+- Complete the unit-tests for the Sprint Data JPA implementation
+- The "Checkout" button should be at the bottom of the basket area, fixed. Also areas for each product should be possible to scroll if not all products or selections fit in the area..

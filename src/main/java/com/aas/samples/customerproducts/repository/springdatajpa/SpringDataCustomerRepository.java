@@ -8,22 +8,21 @@ import com.aas.samples.customerproducts.repository.CustomerRepository;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
-import org.springframework.data.repository.query.Param;
 
 
 /**
- * Spring Data JPA specialization of the {@link CustomerRepository} interface.
+ * Spring Data JPA specialisation of the {@link CustomerRepository} interface.
  *
  * @author Amadeo Asco
  */
 public interface SpringDataCustomerRepository extends CustomerRepository, Repository<Customer, Integer> {
 
     @Override
-    @Query("SELECT c FROM customers c ORDER BY c.name")
+    @Query("SELECT c FROM Customer c ORDER BY c.lastName, c.firstName")
     Collection<Customer> findAll() throws DataAccessException;
 
     @Override
-    @Query("SELECT c FROM customers c WHERE c.id :=id ORDER BY c.name")
-    Customer findById(@Param("id") int id);
+    @Query("SELECT c FROM Customer c WHERE c.id = ?1 ORDER BY c.lastName, c.firstName")
+    Customer findById(int customerId);
 
 }

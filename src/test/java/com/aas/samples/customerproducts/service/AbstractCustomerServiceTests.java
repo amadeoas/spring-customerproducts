@@ -35,9 +35,24 @@ public abstract class AbstractCustomerServiceTests {
 
     @Test
     public void shouldFindAllCustomers() {
-        final Collection<Customer> customers = this.customerService.getAllCustomers();
+        final Collection<Customer> customers 
+        		= this.customerService.getAllCustomers();
 
         assertThat(customers.size()).isEqualTo(3);
+        for (final Customer customer : customers) {
+            assertThat(customer).isNotNull();
+            assertThat(customer.getLocation()).isNotNull();
+        }
+    }
+
+    @Test
+    public void shouldCustomer() {
+    	final int customerId = 2;
+        final Customer customer = this.customerService.findCustomer(customerId);
+
+        assertThat(customer).isNotNull();
+        assertThat(customer.getId()).isEqualTo(customerId);
+        assertThat(customer.getLocation()).isNotNull();
     }
 
 }

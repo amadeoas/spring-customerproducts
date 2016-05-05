@@ -7,14 +7,14 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 
 /**
- * Integration test using the jdbc profile.</p>
+ * Integration test using the jpa profile.
  *
  * @author Amadeo Asco
- * @see AbstractCustomerServiceTests for more details.
+ * @see AbstractSubscriptionProductServiceTests for more details.
  */
 @ContextConfiguration(locations = {"classpath:spring/business-config.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)
-@ActiveProfiles("jdbc")
-public class CustomerServiceJdbcTests extends AbstractCustomerServiceTests {
+@ActiveProfiles("jpa")
+public class SubscriptionProductServiceJpaTests extends AbstractSubscriptionProductServiceTests {
 
 }
