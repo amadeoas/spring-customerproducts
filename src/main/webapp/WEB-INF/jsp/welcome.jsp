@@ -34,6 +34,7 @@
 		        	</li>
 		        	<li>Once all the required products have been selected press the 'Checkout' button.</li>
 		        </ul>
+		        You can see the project on <a href="https://github.com/amadeoas/spring-customerproducts">here</a>.
 		  	</div>
         </div>
     </div>
