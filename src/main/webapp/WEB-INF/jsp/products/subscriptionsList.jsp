@@ -19,7 +19,7 @@
 	<body ng-app="myApp">
 		<customerproducts:bodyHeader menuName="products"/>
 		<div class="container-fluid">
-		    <div ng-controller="selectionsController" class="container xd-container">
+		    <div id="selectionsController" ng-controller="selectionsController" class="container xd-container" ng-init="getBasket(${basket.customer.id})">
 		        <h2>Subscriptions available for ${basket.customer.firstName} ${basket.customer.lastName}</h2>
 		
 				<c:forEach items="${categories}" var="category">
@@ -27,7 +27,7 @@
 					    <datatables:table id="${category.category}_tb" data="${category.products}" row="product" cssClass="table table-striped"
 			                          pageable="false" info="false" filterable="false" sortable="false">
 				            <datatables:column title="${category.category}">
-							    <input type="checkbox" id="${product.id}" value="${product.id}" ng-click="change(${product.id}, '${category.category}', '${product.name}')" /> <label for="${product.id}">${product.name}</label>
+							    <input type="checkbox" id="${product.id}" value="${product.id}" ng-click="change(${product.id}, '${category.category}', '${product.name}')" ng-checked="isChecked(${product.id})" /> <label for="${product.id}">${product.name}</label>
 				            </datatables:column>
 				       	</datatables:table>
 			    	</div>
@@ -44,18 +44,17 @@
 	                	</tbody>
 	                </table>
 	                <div id="footer" class="footer">
-						<button type="submit" form="" value="Checkout" ng-click="sendPost(${basket.customer.id}); $event.stopPropagation();" ng-disabled="basket.products.length == 0" class="btn_bottom">Checkout</button>
+						<button type="submit" form="" value="Checkout" ng-click="sendPost(${basket.customer.id}); $event.stopPropagation();" ng-disabled="!basket.hasChanged" class="btn_bottom">Checkout</button>
 	               	</div>
 			    </div>
 		
 		        <customerproducts:footer/>
+
+//				<script>
+//					getBasket("${basket.customer.id}");
+//				</script>
 		    </div>
 		</div>
 		<jsp:include page="../fragments/footer.jsp"/>
-
-		<script>
-			<!-- Clean preset selections -->
-			reset();
-		</script>
 	</body>
 </html>

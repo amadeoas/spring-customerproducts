@@ -26,7 +26,8 @@ public interface SubscriptionProductRepository {
      * 			customer.
      * @throws DataAccessException when failed to access the data.
      */
-	List<SubscriptionProduct> findByCustomerId(int customerId) throws DataAccessException;
+	List<SubscriptionProduct> findByCustomerId(int customerId) 
+			throws DataAccessException;
 
 
     /**
@@ -35,7 +36,7 @@ public interface SubscriptionProductRepository {
      * @param customerId the customer's ID. It is needed in the case of the 
      * 			list is empty so we need to delete all entries for that 
      * 			customer.
-     * @param subscription the subscription.
+     * @param subscriptions the subscribed products.
      * @throws DataAccessException when failed to access the data.
      */
     void save(int customerId, List<SubscriptionProduct> subscriptions) 

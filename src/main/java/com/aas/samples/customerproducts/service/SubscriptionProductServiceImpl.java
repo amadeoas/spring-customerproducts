@@ -37,14 +37,7 @@ public class SubscriptionProductServiceImpl implements SubscriptionProductServic
 	public Subscription findBySubscriptionId(int customerId) {
 		final List<SubscriptionProduct> subscriptions 
 				= this.subscriptionRepository.findByCustomerId(customerId);
-		final Customer customer;
-		
-		if (subscriptions.size() > 0) {
-			// No need to call for customer details
-			customer = subscriptions.get(0).getCustomer();
-		} else {
-			customer = this.customerRepository.findById(customerId);
-		}
+		final Customer customer = this.customerRepository.findById(customerId);
 
 		return new Subscription(customer, subscriptions);
 	}

@@ -1,12 +1,14 @@
 package com.aas.samples.customerproducts.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.aas.samples.customerproducts.model.Basket;
 import com.aas.samples.customerproducts.model.Subscription;
@@ -34,6 +36,7 @@ public class SubscriptionProductController {
      * <p>Saves a customer products selection.</p>
      * 
      * <p>Expected HTTP POST and request '/subscriptions'.</p>
+     * @param basket the basket.
      * @param model the model.
      * @return the template.
      */
@@ -52,10 +55,23 @@ public class SubscriptionProductController {
      * <p>Expected HTTP GET and request '/subscriptions/{customerId}'.</p>
      * 
      * @param customerId the customer's ID.
+     * @return the subscriptions.
+     */
+    @RequestMapping(value="/data/{customerId}", method=RequestMethod.GET)
+    public @ResponseBody Basket subscriptionsData(@PathVariable int customerId) {
+    	return new Basket(this.subscriptionService.findBySubscriptionId(customerId));
+    }
+
+	/**
+     * <p>Retrieves a list of all the products the specified customer is subscribed to.</p>
+     * 
+     * <p>Expected HTTP GET and request '/subscriptions/{customerId}'.</p>
+     * 
+     * @param customerId the customer's ID.
      * @param model the model.
      * @return the template.
      */
-    @RequestMapping(value="/{customerId}", method=RequestMethod.GET, produces = "text/html")
+    @RequestMapping(value="/view/{customerId}", method=RequestMethod.GET, produces = {MediaType.TEXT_HTML_VALUE})
     public String subscriptions(@PathVariable int customerId, final Model model) {
     	final Subscription subscriptions = this.subscriptionService.findBySubscriptionId(customerId);
 

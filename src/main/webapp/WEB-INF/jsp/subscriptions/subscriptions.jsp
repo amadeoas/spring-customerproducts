@@ -29,6 +29,9 @@
 		            <datatables:column title="Location">
 		                <c:out value="${sp.product.location.name}"/>
 		            </datatables:column>
+		            <datatables:column title="From">
+		                <c:out value="${sp.created}"/>
+		            </datatables:column>
 			    </datatables:table>
 		
 		        <customerproducts:footer/>
