@@ -44,6 +44,7 @@ public class SubscriptionProductController {
     public String subscriptions(@RequestBody final Basket basket, final Model model) {
     	final Subscription subscription = new Subscription(basket);
 
+    	model.addAttribute("language","en");
     	this.subscriptionService.save(subscription);
     	
     	return "success";
@@ -75,6 +76,7 @@ public class SubscriptionProductController {
     public String subscriptions(@PathVariable int customerId, final Model model) {
     	final Subscription subscriptions = this.subscriptionService.findBySubscriptionId(customerId);
 
+    	model.addAttribute("language","en");
     	model.addAttribute("subscriptions", subscriptions);
     	
     	return "subscriptions/subscriptions";
@@ -89,7 +91,9 @@ public class SubscriptionProductController {
      */
     @RequestMapping(value="/success", method=RequestMethod.GET)
     public String success(final Model model) {
-        return "success";
+    	model.addAttribute("language","en");
+
+    	return "success";
     }
 
 }

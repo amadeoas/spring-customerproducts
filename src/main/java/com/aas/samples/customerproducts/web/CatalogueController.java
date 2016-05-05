@@ -75,6 +75,7 @@ public class CatalogueController {
     		}
     		ccategory.add(product);
     	}
+    	model.addAttribute("language","en");
     	model.addAttribute("categories", categories);
     	model.addAttribute("basket", new Basket(subscription));
     	
@@ -94,6 +95,7 @@ public class CatalogueController {
     	final Collection<Product> products = this.catalogueService.getAllProducts();
 
     	products.stream().sorted((p, q) -> p.getCategory().getName().compareTo(q.getCategory().getName()));
+    	model.addAttribute("language","en");
     	model.addAttribute("products", products);
 
         return "products/productList";

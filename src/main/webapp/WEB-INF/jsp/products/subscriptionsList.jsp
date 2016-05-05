@@ -11,7 +11,7 @@
 <%@ taglib prefix="datatables" uri="http://github.com/dandelion/datatables" %>
 <%@ taglib prefix="customerproducts" tagdir="/WEB-INF/tags" %>
 
-<html lang="en">
+<html lang="${language}">
 
 	<jsp:include page="../fragments/htmlHeader.jsp"/>
 
@@ -20,7 +20,7 @@
 		<customerproducts:bodyHeader menuName="products"/>
 		<div class="container-fluid">
 		    <div id="selectionsController" ng-controller="selectionsController" class="container xd-container" ng-init="getBasket(${basket.customer.id})">
-		        <h2>Subscriptions available for ${basket.customer.firstName} ${basket.customer.lastName}</h2>
+		        <h2><fmt:message key="subscriptionsAvaliable"/>${basket.customer.firstName} ${basket.customer.lastName}</h2>
 		
 				<c:forEach items="${categories}" var="category">
 			        <div id="${category.category}" class="line_layout">
@@ -32,10 +32,10 @@
 				       	</datatables:table>
 			    	</div>
 		        </c:forEach>
-			    <div id="${basket.category}" class="line_layout">
-				    <table id="${basket.category}_tb" class="table table-striped">
+			    <div id="Basket" class="line_layout">
+				    <table id="Basket_tb" class="table table-striped">
 			            <thead>
-			                <tr><th><c:out value="${basket.category}" /></th></tr>
+			                <tr><th><fmt:message key="basket"/></th></tr>
 			            </thead>
 						<tbody>
 			                <tr ng-repeat="product in basket.products | orderBy:sortingOrder:reverse">
@@ -44,7 +44,7 @@
 	                	</tbody>
 	                </table>
 	                <div id="footer" class="footer">
-						<button type="submit" form="" value="Checkout" ng-click="sendPost(${basket.customer.id}); $event.stopPropagation();" ng-disabled="!basket.hasChanged" class="btn_bottom">Checkout</button>
+						<button type="submit" form="" value="Checkout" ng-click="sendPost(${basket.customer.id}); $event.stopPropagation();" ng-disabled="!basket.hasChanged" class="btn_bottom"><fmt:message key="checkout"/></button>
 	               	</div>
 			    </div>
 		

@@ -48,6 +48,7 @@ public class CustomersController {
     public String initList(final Model model) {
     	final Collection<Customer> customers = this.customerService.getAllCustomers();
 
+    	model.addAttribute("language","en");
     	model.addAttribute("customers", customers);
 
         return "customers/customersList";

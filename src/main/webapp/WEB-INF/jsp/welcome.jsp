@@ -6,8 +6,6 @@
 <%@ taglib prefix="customerproducts" tagdir="/WEB-INF/tags" %>
 
 
-<html lang="en">
-
 <jsp:include page="fragments/htmlHeader.jsp"/>
 
 <body>

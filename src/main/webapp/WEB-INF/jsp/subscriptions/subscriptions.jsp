@@ -7,7 +7,7 @@
 <%@ taglib prefix="datatables" uri="http://github.com/dandelion/datatables" %>
 <%@ taglib prefix="customerproducts" tagdir="/WEB-INF/tags" %>
 
-<html lang="en">
+<html lang="${language}">
 
 	<jsp:include page="../fragments/htmlHeader.jsp"/>
 
@@ -16,7 +16,7 @@
 		<customerproducts:bodyHeader menuName="products"/>
 		<div class="container-fluid">
 		    <div class="container xd-container">
-		        <h2>Subscriptions for ${subscriptions.customer.firstName} ${subscriptions.customer.lastName}</h2>
+		        <h2><fmt:message key="currentSubscriptions"/> ${subscriptions.customer.firstName} ${subscriptions.customer.lastName}</h2>
 						
         		<datatables:table id="products" data="${subscriptions.products}" row="sp" cssClass="table table-striped"
                           pageable="false" info="false">
