@@ -5,6 +5,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="customerproducts" tagdir="/WEB-INF/tags" %>
 
+<html lang="${language}">
+
 <fmt:setLocale value="${language}"/>
 <jsp:include page="fragments/htmlHeader.jsp"/>
 
