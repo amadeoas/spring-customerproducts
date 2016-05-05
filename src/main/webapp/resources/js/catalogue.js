@@ -4,6 +4,7 @@ myApp.controller('selectionsController', ['$scope', '$http', '$window', function
 		$scope.basket = {
 				category: "Basket", 
 				customer: {id: -1},
+				hasChanged: false,
 				products: []};
 
 		$scope.change = function(productId, category, productName) {
@@ -30,7 +31,8 @@ myApp.controller('selectionsController', ['$scope', '$http', '$window', function
 	    	$scope.basket.customer.id = customerId;
 	    	
 	        var data = $scope.basket;
-		
+
+	    	$scope.basket.hasChanged = false;
 	    	$http.post("/customerproducts/subscriptions", data).then(function successCallback(response) {
 	    	    // This callback will be called asynchronously when the 
 	    		// response is available
