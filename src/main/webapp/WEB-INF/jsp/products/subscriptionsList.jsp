@@ -21,38 +21,36 @@
 		<div class="container-fluid">
 		    <div id="selectionsController" ng-controller="selectionsController" class="container xd-container" ng-init="getBasket(${basket.customer.id})">
 		        <h2><fmt:message key="subscriptionsAvaliable"/>${basket.customer.firstName} ${basket.customer.lastName}</h2>
-		
-				<c:forEach items="${categories}" var="category">
-			        <div id="${category.category}" class="line_layout">
-					    <datatables:table id="${category.category}_tb" data="${category.products}" row="product" cssClass="table table-striped"
-			                          pageable="false" info="false" filterable="false" sortable="false">
-				            <datatables:column title="${category.category}">
-							    <input type="checkbox" id="${product.id}" value="${product.id}" ng-click="change(${product.id}, '${category.category}', '${product.name}')" ng-checked="isChecked(${product.id})" /> <label for="${product.id}">${product.name}</label>
-				            </datatables:column>
-				       	</datatables:table>
-			    	</div>
-		        </c:forEach>
-			    <div id="Basket" class="line_layout">
-				    <table id="Basket_tb" class="table table-striped">
-			            <thead>
-			                <tr><th><fmt:message key="basket"/></th></tr>
-			            </thead>
-						<tbody>
-			                <tr ng-repeat="product in basket.products | orderBy:sortingOrder:reverse">
-			                    <td><label>- {{product.name}}</label></td>
-			                </tr>
-	                	</tbody>
-	                </table>
-	                <div id="footer" class="footer">
-						<button type="submit" form="" value="Checkout" ng-click="sendPost(${basket.customer.id}); $event.stopPropagation();" ng-disabled="!basket.hasChanged" class="btn_bottom"><fmt:message key="checkout"/></button>
-	               	</div>
+
+				<div align="center">
+					<c:forEach items="${categories}" var="category">
+				        <div id="${category.category}" class="line_layout">
+						    <datatables:table id="${category.category}_tb" data="${category.products}" row="product" cssClass="table table-striped"
+				                          pageable="false" info="false" filterable="false" sortable="false">
+					            <datatables:column title="${category.category}">
+								    <input type="checkbox" id="${product.id}" value="${product.id}" ng-click="change(${product.id}, '${category.category}', '${product.name}')" ng-checked="isChecked(${product.id})" /> <label for="${product.id}">${product.name}</label>
+					            </datatables:column>
+					       	</datatables:table>
+				    	</div>
+			        </c:forEach>
+				    <div id="Basket" class="line_layout">
+					    <table id="Basket_tb" class="table table-striped">
+				            <thead>
+				                <tr><th><fmt:message key="basket"/></th></tr>
+				            </thead>
+							<tbody>
+				                <tr ng-repeat="product in basket.products | orderBy:sortingOrder:reverse">
+				                    <td><label>- {{product.name}}</label></td>
+				                </tr>
+		                	</tbody>
+		                </table>
+		                <div id="footer" class="footer">
+							<button type="submit" form="" value="Checkout" ng-click="sendPost(${basket.customer.id}); $event.stopPropagation();" ng-disabled="!basket.hasChanged" class="btn_bottom"><fmt:message key="checkout"/></button>
+		               	</div>
+				    </div>
 			    </div>
 		
 		        <customerproducts:footer/>
-
-//				<script>
-//					getBasket("${basket.customer.id}");
-//				</script>
 		    </div>
 		</div>
 		<jsp:include page="../fragments/footer.jsp"/>

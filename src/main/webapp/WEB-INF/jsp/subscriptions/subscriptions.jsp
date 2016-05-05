@@ -17,7 +17,7 @@
 		<div class="container-fluid">
 		    <div class="container xd-container">
 		        <h2><fmt:message key="currentSubscriptions"/> ${subscriptions.customer.firstName} ${subscriptions.customer.lastName}</h2>
-						
+
         		<datatables:table id="products" data="${subscriptions.products}" row="sp" cssClass="table table-striped"
                           pageable="false" info="false">
 		            <datatables:column title="Category">
@@ -33,7 +33,7 @@
 		                <c:out value="${sp.created}"/>
 		            </datatables:column>
 			    </datatables:table>
-		
+
 		        <customerproducts:footer/>
 		    </div>
 		</div>
