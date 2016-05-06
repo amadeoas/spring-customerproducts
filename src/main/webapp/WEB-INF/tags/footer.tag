@@ -32,19 +32,19 @@
 				</c:when>    
 			    <c:otherwise>
 		        	<div class="language">
+			        	<img src="<spring:url value="/resources/images/en.png" htmlEscape="true" />"
+			                                             alt="${msg_currentLanguage}" class="footer" />
+			        </div>
+		        	<div class="language">
 			        	<a href="/customerproducts/subscriptions/language/es" title="${msg_altLanguage}">
 			        		<img src="<spring:url value="/resources/images/es.png" htmlEscape="true" />"
 			                                             alt="${msg_altLanguage}" class="footer" />
 			            </a>
 			        </div>
-		        	<div class="language">
-			        	<img src="<spring:url value="/resources/images/en.png" htmlEscape="true" />"
-			                                             alt="${msg_currentLanguage}" class="footer" />
-			        </div>
 			    </c:otherwise>
 			</c:choose>
 			<span>
-        	<a href="https://uk.linkedin.com/in/dr-amadeo-ascó-signes-57716883">
+        	<a href="https://uk.linkedin.com/in/dr-amadeo-ascó-signes-57716883" title="${msg_by}">
         		<img src="<spring:url value="/resources/images/customerproducts-logo.png" htmlEscape="true" />"
                                              alt="${msg_by}"/>
             </a>
