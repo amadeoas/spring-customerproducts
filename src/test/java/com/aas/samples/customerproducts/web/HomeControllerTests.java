@@ -1,7 +1,6 @@
 package com.aas.samples.customerproducts.web;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
@@ -27,10 +26,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 @ContextConfiguration({"classpath:spring/business-config.xml", "classpath:spring/tools-config.xml", "classpath:spring/mvc-core-config.xml"})
 @WebAppConfiguration
 @ActiveProfiles("spring-data-jpa")
-public class SubscriptionProductControllerTests {
-
-    @Autowired
-    private SubscriptionProductController subscriptionProductController;
+public class HomeControllerTests {
 
     @Autowired
     private FormattingConversionServiceFactoryBean formattingConversionServiceFactoryBean;
@@ -41,30 +37,16 @@ public class SubscriptionProductControllerTests {
     @Before
     public void setup() {
         this.mockMvc = MockMvcBuilders
-            .standaloneSetup(this.subscriptionProductController)
+            .standaloneSetup()
             .setConversionService(this.formattingConversionServiceFactoryBean.getObject())
             .build();
     }
 
     @Test
-    public void testInitCustomerProductsForm() throws Exception {
-        this.mockMvc.perform(get("/subscriptions/1"))
-            .andExpect(status().isOk())
-            .andExpect(view().name("subscriptions/subscriptions"));
-    }
-
-    @Test
-    public void testInitList() throws Exception {
-        this.mockMvc.perform(post("/subscriptions"))
-            .andExpect(status().isOk())
-            .andExpect(view().name("products/productList"));
-    }
-
-    @Test
     public void testSuccess() throws Exception {
-        this.mockMvc.perform(get("/subscriptions/success"))
+        this.mockMvc.perform(get("/"))
             .andExpect(status().isOk())
-            .andExpect(view().name("success"));
+            .andExpect(view().name("wellcome"));
     }
 
 }
