@@ -8,8 +8,8 @@
 <%@ taglib prefix="customerproducts" tagdir="/WEB-INF/tags" %>
 
 <html lang="${language}">
-
 	<fmt:setLocale value="${language}"/>
+	<fmt:bundle basename="messages.messages">
 	<c:set var="msg_category" scope="request">
 		<fmt:message key="tbCategory"/>
 	</c:set>
@@ -25,8 +25,9 @@
 	<jsp:include page="../fragments/htmlHeader.jsp"/>
 
 	<!-- This need angular -->
-	<body>
+	<body onload="setLanguage('${language}');">
 		<customerproducts:bodyHeader menuName="subscriptions"/>
+
 		<div class="container-fluid">
 		    <div class="container xd-container">
 		        <h2><fmt:message key="currentSubscriptions"/> ${subscriptions.customer.firstName} ${subscriptions.customer.lastName}</h2>
@@ -50,6 +51,8 @@
 		        <customerproducts:footer/>
 		    </div>
 		</div>
+
 		<jsp:include page="../fragments/footer.jsp"/>
 	</body>
+	</fmt:bundle>
 </html>

@@ -8,10 +8,9 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 /**
@@ -21,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 @RequestMapping("/customers")
-public class CustomersController {
+public class CustomersController extends BaseController {
 
     private final CustomerService customerService;
 
@@ -31,24 +30,20 @@ public class CustomersController {
         this.customerService = customerService;
     }
 
-    @InitBinder
-    public void setAllowedFields(final WebDataBinder dataBinder) {
-        dataBinder.setDisallowedFields("id");
-    }
-
 	/**
      * <p>Retrieves a list of all the customers.</p>
      * 
      * <p>Expected HTTP GET and request '/customer'.</p>
      * 
+     * @param lang the language.
      * @param model the model.
      * @return the template.
      */
     @RequestMapping(method = RequestMethod.GET)
-    public String initList(final Model model) {
+    public String initList(@RequestParam(value="lang", required=false) String language, final Model model) {
     	final Collection<Customer> customers = this.customerService.getAllCustomers();
 
-    	model.addAttribute("language","en");
+    	setLanguage(language, model);
     	model.addAttribute("customers", customers);
 
         return "customers/customersList";

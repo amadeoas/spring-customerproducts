@@ -33,14 +33,14 @@ myApp.controller('selectionsController', ['$scope', '$http', '$window', function
 	        var data = $scope.basket;
 
 	    	$scope.basket.hasChanged = false;
-	    	$http.post("/customerproducts/subscriptions", data).then(function successCallback(response) {
+	    	$http.post('/customerproducts/subscriptions?lang=' + $window.language, data).then(function successCallback(response) {
 	    	    // This callback will be called asynchronously when the 
 	    		// response is available
-		    	$window.location.href = '/customerproducts/subscriptions/success';
+		    	$window.location.href = '/customerproducts/subscriptions/success/?lang=' + $window.language;
 	    	}, function errorCallback(response) {
 	    	    // This callback will be called asynchronously an error occurs
 	    	    // or server returns response with an error status.
-		    	$window.location.href = '/customerproducts';
+		    	$window.location.href = '/customerproducts/?lang=' + $window.language;
 	    	});
 	    };
 	    
@@ -58,7 +58,7 @@ myApp.controller('selectionsController', ['$scope', '$http', '$window', function
 	    	// Send the request
 	    	$scope.basket.customer.id = customerId;
 		
-	    	$http.get("/customerproducts/subscriptions/data/" + customerId)
+	    	$http.get('/customerproducts/subscriptions/data/' + customerId)
 	    	.then(function successCallback(response) {
 	    	    // This callback will be called asynchronously when the 
 	    		// response is available
@@ -66,7 +66,11 @@ myApp.controller('selectionsController', ['$scope', '$http', '$window', function
 	    	}, function errorCallback(response) {
 		   	    // This callback will be called asynchronously an error occurs
 		   	    // or server returns response with an error status.
-		    	$window.location.href = '/customerproducts';
+		    	$window.location.href = '/customerproducts/?lang=' + $window.language;
 	    	});
 	    };
 }]);
+
+setLanguage = function(language) {
+	window.language = language;
+}

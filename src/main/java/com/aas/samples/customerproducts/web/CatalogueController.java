@@ -10,7 +10,6 @@ import com.aas.samples.customerproducts.service.SubscriptionProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -25,7 +24,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/catalogue")
-public class CatalogueController {
+public class CatalogueController extends BaseController {
 
     private final CatalogueService catalogueService;
     private final SubscriptionProductService subscriptionService;
@@ -38,23 +37,19 @@ public class CatalogueController {
         this.subscriptionService = subscriptionService;
     }
 
-    @InitBinder
-    public void setAllowedFields(final WebDataBinder dataBinder) {
-        dataBinder.setDisallowedFields("id");
-    }
-
 	/**
      * <p>Retrieves a list of all the products available for the specified customer.</p>
      * 
      * <p>Expected HTTP GET and request '/subscriptions/{customerId}'.</p>
      * 
      * @param customerId the customer's ID.
+     * @param lang the language.
      * @param model the model.
      * @return the template.
      */
 	@RequestMapping(value = "/{customerId}", method = RequestMethod.GET, produces = "text/html")
     public String initCustomerProductsForm(@PathVariable int customerId, 
-    		final Model model) {
+    		@RequestParam(value="lang", required=false) String language, final Model model) {
     	final Subscription subscription = this.subscriptionService.findBySubscriptionId(customerId);
     	final Collection<Product> products = this.catalogueService.findProducts(subscription.getCustomer().getLocation().getId());
     	final List<CatalogueCategory> categories = new ArrayList<>();
@@ -75,7 +70,7 @@ public class CatalogueController {
     		}
     		ccategory.add(product);
     	}
-    	model.addAttribute("language","en");
+    	setLanguage(language, model);
     	model.addAttribute("categories", categories);
     	model.addAttribute("basket", new Basket(subscription));
     	
@@ -83,19 +78,21 @@ public class CatalogueController {
     }
 
 	/**
-     * <p>Retrieves a list of all the products, the catalog.</p>
+     * <p>Retrieves a list of all the products, the catalogue.</p>
      * 
      * <p>Expected HTTP GET and request '/subscriptions'.</p>
      * 
      * @param model the model.
+     * @param language the language.
      * @return the template.
      */
     @RequestMapping(method = RequestMethod.GET)
-    public String initList(final Model model) {
+    public String initList(@RequestParam(value="lang", required=false) String language, final Model model) {
     	final Collection<Product> products = this.catalogueService.getAllProducts();
 
     	products.stream().sorted((p, q) -> p.getCategory().getName().compareTo(q.getCategory().getName()));
-    	model.addAttribute("language","en");
+
+    	setLanguage(language, model);
     	model.addAttribute("products", products);
 
         return "products/productList";

@@ -2,7 +2,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<fmt:setLocale value="${language}"/>
 <c:set var="msg_currentLanguage" scope="request">
 	<fmt:message key="currentLanguage"/>
 </c:set>
@@ -18,13 +17,13 @@
         <div class="col-12 text-center">
         	<hr style="margin-bottom: 1px;" />
 	        <c:choose>
-				<c:when test="${language=='es'}">
+				<c:when test="${language=='es_ES'}">
 		        	<div class="language">
 			        	<img src="<spring:url value="/resources/images/es.png" htmlEscape="true" />"
 			                                             alt="${msg_currentLanguage}" class="footer" />
 			        </div>
 		        	<div class="language">
-			            <a href="/customerproducts/subscriptions/language/en" title="${msg_altLanguage}">
+			            <a href="?lang=en_GB" title="${msg_altLanguage}">
 			        		<img src="<spring:url value="/resources/images/en.png" htmlEscape="true" />"
 			                                             alt="${msg_altLanguage}" class="footer" />
 			            </a>
@@ -36,7 +35,7 @@
 			                                             alt="${msg_currentLanguage}" class="footer" />
 			        </div>
 		        	<div class="language">
-			        	<a href="/customerproducts/subscriptions/language/es" title="${msg_altLanguage}">
+			        	<a href="?lang=es_ES" title="${msg_altLanguage}">
 			        		<img src="<spring:url value="/resources/images/es.png" htmlEscape="true" />"
 			                                             alt="${msg_altLanguage}" class="footer" />
 			            </a>

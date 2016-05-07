@@ -64,6 +64,12 @@ located at the top right hand side. The views are:
 If an exception is thrown when processing a request by one of the controller 
 then an internal error page is displayed on the browser.
 
+All the pages have at the footer, left hand side, a list of the languages 
+supported represented by the flags of the countries the language originate 
+from. The first of this flags corresponds to the language displayed in the 
+shown page and subsequent pages. The next flags to this one are the other 
+language supported, any of which can be clicked to change the language.
+
 ### Home view
 The 'Home' view gives an introduction to the web app.
 
@@ -264,6 +270,6 @@ modified by uploading the XML files located under the [docs](docs/) directory
 from within [draw.io](https://www.draw.io/").
 
 ### TODO
-- Add support to change the language from any of the views, currently only two languages have translations English and Spanish.
+- The 'Search' word shown in all the tables should also be changed when changing the language.
 - Complete the unit-tests for the Sprint Data JPA implementation
 - The "Checkout" button should be at the bottom of the basket area, fixed. Also areas for each product should be possible to scroll if not all products or selections fit in the area..

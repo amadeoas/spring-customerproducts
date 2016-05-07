@@ -5,13 +5,11 @@
 <%@ attribute name="name" required="true" rtexprvalue="true"
               description="Name of the active menu: home, customers, or products" %>
 
-<fmt:setLocale value="${language}"/>
-
 <%-- Static navbar --%>
 <nav class="navbar navbar-default" role="navigation">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="<spring:url value="/" htmlEscape="true" />"><span></span></a>
+            <a class="navbar-brand" href="<spring:url value="/?lang=${language}" htmlEscape="true" />"><span></span></a>
             <button type="button" class="navbar-toggle" data-toggle="collapse">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
@@ -29,7 +27,7 @@
                         <c:set var="cssMenu" value=""/>
                     </c:otherwise>
                 </c:choose>
-                <li class="${cssMenu}"><a href="<spring:url value="/" htmlEscape="true" />"><span class="glyphicon glyphicon-home" aria-hidden="true"></span><span> <fmt:message key="menuHome"/></span></a></li>
+                <li class="${cssMenu}"><a href="<spring:url value="/?lang=${language}" htmlEscape="true" />"><span class="glyphicon glyphicon-home" aria-hidden="true"></span><span> <fmt:message key="menuHome"/></span></a></li>
                 <c:choose>
                     <c:when test="${name eq 'customers'}">
                         <c:set var="cssMenu" value="active"/>
@@ -38,7 +36,7 @@
                         <c:set var="cssMenu" value=""/>
                     </c:otherwise>
                 </c:choose>
-                <li class="${cssMenu}"><a href="<spring:url value="/customers" htmlEscape="true" />"><span class="glyphicon glyphicon-search" aria-hidden="true"></span><span> <fmt:message key="menuCustomers"/></span></a></li>
+                <li class="${cssMenu}"><a href="<spring:url value="/customers?lang=${language}" htmlEscape="true" />"><span class="glyphicon glyphicon-search" aria-hidden="true"></span><span> <fmt:message key="menuCustomers"/></span></a></li>
                 <c:choose>
                     <c:when test="${name eq 'products'}">
                         <c:set var="cssMenu" value="active"/>
@@ -47,7 +45,7 @@
                         <c:set var="cssMenu" value=""/>
                     </c:otherwise>
                 </c:choose>
-                <li class="${cssMenu}"><a href="<spring:url value="/catalogue" htmlEscape="true" />"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span><span> <fmt:message key="menuProducts"/></span></a></li>
+                <li class="${cssMenu}"><a href="<spring:url value="/catalogue?lang=${language}" htmlEscape="true" />"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span><span> <fmt:message key="menuProducts"/></span></a></li>
             </ul>
         </div> <%--/.nav-collapse --%>
     </div> <%--/.container-fluid --%>
