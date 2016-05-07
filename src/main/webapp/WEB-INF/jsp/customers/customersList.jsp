@@ -45,7 +45,7 @@
 		            </datatables:column>
 		            <datatables:column title="${msg_location}" property="location.name"/>
 		            <datatables:column title="${msg_actions}">
-		            	<a href="/customerproducts/subscriptions/view/${customer.id}" title="${msg_viewSubsc}"><span class="glyphicon glyphicon-th-list icon-blue"></span></a> <a href="/customerproducts/catalogue/${customer.id}" title="${msg_changeSubsc}"><span class="glyphicon glyphicon-pencil icon-blue"></span></a>
+		            	<a href="/customerproducts/subscriptions/view/${customer.id}?lang=${language}" title="${msg_viewSubsc}"><span class="glyphicon glyphicon-th-list icon-blue"></span></a> <a href="/customerproducts/catalogue/${customer.id}?lang=${language}" title="${msg_changeSubsc}"><span class="glyphicon glyphicon-pencil icon-blue"></span></a>
 		            </datatables:column>
 		        </datatables:table>
 		
