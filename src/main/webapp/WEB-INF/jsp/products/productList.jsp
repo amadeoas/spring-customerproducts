@@ -19,9 +19,12 @@
 	<c:set var="msg_location" scope="request">
 		<fmt:message key="tbLocation"/>
 	</c:set>
+	<c:set var="msg_search" scope="request">
+		<fmt:message key="search"/>
+	</c:set>
 	<jsp:include page="../fragments/htmlHeader.jsp"/>
 	
-	<body onload="setLanguage('${language}');">
+	<body onload="setLanguage('${language}', '${msg_search}', 'products');">
 		<customerproducts:bodyHeader menuName="products"/>
 
 		<div class="container-fluid">

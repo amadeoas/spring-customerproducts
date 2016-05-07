@@ -71,6 +71,20 @@ myApp.controller('selectionsController', ['$scope', '$http', '$window', function
 	    };
 }]);
 
-setLanguage = function(language) {
+setLanguage = function(language, search, tbId) {
 	window.language = language;
+	
+	if (search) {
+		// Input text box will be appended at the end automatically
+		$(document).ready(function() {
+		  $('#'+tbId).DataTable({
+			destroy: true,
+			bPaginate: false,
+			info: false,
+		    oLanguage: {
+		      sSearch: search
+		    }
+		  });
+		});
+	}
 }

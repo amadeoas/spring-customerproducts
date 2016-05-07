@@ -22,17 +22,20 @@
 	<c:set var="msg_from" scope="request">
 		<fmt:message key="timestamp"/>
 	</c:set>
+	<c:set var="msg_search" scope="request">
+		<fmt:message key="search"/>
+	</c:set>
 	<jsp:include page="../fragments/htmlHeader.jsp"/>
 
 	<!-- This need angular -->
-	<body onload="setLanguage('${language}');">
+	<body onload="setLanguage('${language}', '${msg_search}', 'subscriptions');">
 		<customerproducts:bodyHeader menuName="subscriptions"/>
 
 		<div class="container-fluid">
 		    <div class="container xd-container">
 		        <h2><fmt:message key="currentSubscriptions"/> ${subscriptions.customer.firstName} ${subscriptions.customer.lastName}</h2>
 
-        		<datatables:table id="products" data="${subscriptions.products}" row="sp" cssClass="table table-striped"
+        		<datatables:table id="subscriptions" data="${subscriptions.products}" row="sp" cssClass="table table-striped"
                           pageable="false" info="false">
 		            <datatables:column title="${msg_category}">
 			            <c:out value="${sp.product.category.name}"/>

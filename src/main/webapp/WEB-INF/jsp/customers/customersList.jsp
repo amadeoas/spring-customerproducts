@@ -26,9 +26,12 @@
 	<c:set var="msg_changeSubsc" scope="request">
 		<fmt:message key="changeSubsc"/>
 	</c:set>
+	<c:set var="msg_search" scope="request">
+		<fmt:message key="search"/>
+	</c:set>
 	<jsp:include page="../fragments/htmlHeader.jsp"/>
 	
-	<body onload="setLanguage('${language}');">
+	<body onload="setLanguage('${language}', '${msg_search}', 'customers');">
 		<customerproducts:bodyHeader menuName="customers"/>
 
 		<div class="container-fluid">
