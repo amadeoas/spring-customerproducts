@@ -27,16 +27,16 @@
 				        <br />
 				        <h2>How to use this simple tool</h2>
 				        <ul>
-				        	<li>Press the 'Customers' from the menu above, which will show the list of all the customers avaliable.</li>
-				        	<li>From the list of all the available customers select one by clicking on its name.</li>
-				        	<li>The customer's products view is displayed. Select the required products.
+				        	<li>Press the 'Customers' from the menu above, which will show the list of all the customers available.</li>
+				        	<li>Click in one of the actions to execute it. Available actions:
 					        	<ul>
-					        		<li>Note that all the selected products are displayed in the last column.</li>
+					        		<li><span class="glyphicon glyphicon-list icon-blue"></span> To view the customer's subscription.</li>
+					        		<li><span class="glyphicon glyphicon-pencil icon-blue"></span> To edit the customer's details.</li>
 					        	</ul>
 				        	</li>
 				        	<li>Once all the required products have been selected press the 'Checkout' button.</li>
 				        </ul>
-				        You can see the project on <a href="https://github.com/amadeoas/spring-customerproducts">here</a>.
+				        You can see this project on <a href="https://github.com/amadeoas/spring-customerproducts">here</a>.
 				  	</div>
 		        </div>
 		    </div>
