@@ -34,7 +34,7 @@ public class SubscriptionProductController extends BaseController {
     }
 
 	/**
-     * <p>Saves a customer products selection.</p>
+     * <p>Saves a customer's products selection.</p>
      * 
      * <p>Expected HTTP POST and request '/subscriptions'.</p>
      * 

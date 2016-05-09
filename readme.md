@@ -25,17 +25,6 @@ JDBC and Sprint Data need to be completed for the full unit-tests to fully
 pass.
 
 
-## Running unit-tests
-
-To run all the test execute:
-
->./mvnw test
-
-To run an specific unit-test execute: ./mvnw -Dtest=TestsClassName test, example:
-
->./mvnw -Dtest=CatalogueServiceJpaTests test
-
-
 ## Running unit tests
 
 To run all the unit-tests use:
@@ -88,9 +77,6 @@ is successful the success page is displayed.
 
 - Subscriptions View: The last columns (View) contains a link to each for each 
 of the customers to see his/her subscriptions.
-
-TODO: the 'Subscriptions Selection View' does not show the current 
-subscriptions for the customer.
 
 ### Products view
 The 'Products' view lists all the products in the database. The products can be 
