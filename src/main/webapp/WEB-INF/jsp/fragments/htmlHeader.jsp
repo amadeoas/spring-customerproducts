@@ -36,8 +36,12 @@ CustomerProducts :: a Spring Framework demonstration
     <link href="${jQueryUiDatePickerCss}" rel="stylesheet"/>
     
     <!-- Initialize scripts -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+	<spring:url value="/vendors/jquery/jquery.min.js" var="jQuery"/>
+	<script src="${jQuery}"></script>
+	<spring:url value="/vendors/angular/angular.min.js" var="angularJs"/>
+	<script src="${angularJs}"></script>
+<!--	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> -->
+<!--	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script> -->
 
     <spring:url value="/resources/js/catalogue.js" var="customerproductsJs"/>
 	<script src="${customerproductsJs}"></script>
